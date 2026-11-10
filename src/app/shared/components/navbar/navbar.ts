@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 @Component({
   imports: [],
   selector: 'app-navbar',
-  styleUrl: './navbar.scss',
+  styleUrl: './navbar.css',
   templateUrl: './navbar.html',
 })
 export class Navbar {}

@@ -1,0 +1,235 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap");
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #E8DDF7;
+  color: #333333;
+}
+
+/* --- NAVBAR --- */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #cbbbe3; /* Lila de la barra */
+  padding: 12px 40px;
+}
+.navbar .logo {
+  font-size: 26px;
+  font-weight: bold;
+  font-style: italic;
+  color: #5c3e75;
+}
+.navbar .nav-links {
+  display: flex;
+  gap: 20px;
+}
+.navbar .nav-links a {
+  text-decoration: none;
+  color: #333;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 6px 16px;
+  border-radius: 20px;
+}
+.navbar .nav-links a.active {
+  background-color: #ffffff;
+}
+.navbar .user-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  font-weight: bold;
+}
+.navbar .user-info .avatar-placeholder {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background-color: #4a3b69;
+}
+
+/* --- CONTENEDOR GENERAL --- */
+.container {
+  max-width: 1100px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+/* --- HERO --- */
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+.hero .hero-info {
+  max-width: 480px;
+}
+.hero .hero-info .subtext {
+  color: #7b5294;
+  font-size: 13px;
+  font-weight: bold;
+}
+.hero .hero-info h1 {
+  font-size: 52px;
+  line-height: 1.1;
+  margin: 10px 0;
+  color: #2b2b2b;
+}
+.hero .hero-info .linea {
+  width: 150px;
+  height: 3px;
+  background-color: #7b5294;
+  border: none;
+  margin: 10px 0 16px 0;
+}
+.hero .hero-info p {
+  color: #666;
+  line-height: 1.4;
+  margin-bottom: 20px;
+}
+.hero .hero-info .hero-btns {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.hero .hero-info .hero-btns button {
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+.hero .hero-info .hero-btns .btn-primary {
+  background-color: #7b5294;
+  color: white;
+  border: none;
+}
+.hero .hero-info .hero-btns .btn-secondary {
+  background-color: #ffffff;
+  color: #333;
+  border: 1px solid #ccc;
+}
+.hero .hero-info .nota-lapiz {
+  font-family: "Caveat", cursive;
+  font-size: 22px;
+  color: #7b5294;
+}
+.hero {
+  /* Polaroids */
+}
+.hero .hero-images {
+  position: relative;
+  width: 420px;
+  height: 300px;
+}
+.hero .hero-images .polaroid {
+  background: white;
+  padding: 10px 10px 20px 10px;
+  box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.15);
+  position: absolute;
+}
+.hero .hero-images .polaroid .polaroid-box {
+  background-color: #999;
+}
+.hero .hero-images .polaroid p {
+  font-family: "Caveat", cursive;
+  font-size: 18px;
+  margin-top: 8px;
+  color: #444;
+}
+.hero .hero-images .polaroid-1 {
+  top: 10px;
+  left: 10px;
+  transform: rotate(-3deg);
+  z-index: 1;
+}
+.hero .hero-images .polaroid-1 .polaroid-box {
+  width: 250px;
+  height: 150px;
+  background-color: #4a5c68; /* Espacio para imagen */
+}
+.hero .hero-images .polaroid-2 {
+  right: 20px;
+  bottom: 10px;
+  transform: rotate(5deg);
+  z-index: 2;
+}
+.hero .hero-images .polaroid-2 .polaroid-box {
+  width: 110px;
+  height: 140px;
+  background-color: #8b7965; /* Espacio para imagen */
+}
+.hero .hero-images .nota-flecha {
+  position: absolute;
+  bottom: -10px;
+  left: 100px;
+  font-family: "Caveat", cursive;
+  font-size: 20px;
+  color: #7b5294;
+  z-index: 3;
+}
+
+/* --- FILTRO Y BUSCADOR --- */
+.search-section {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 35px;
+}
+.search-section .btn-filter {
+  background-color: #d1bfe8;
+  color: #4a2e61;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.search-section .search-input {
+  width: 380px;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #777;
+  padding: 6px 4px;
+  outline: none;
+  font-size: 15px;
+}
+
+/* --- GALERÍA --- */
+.gallery h2 {
+  font-family: "Caveat", cursive;
+  color: #7b5294;
+  font-size: 32px;
+  margin-bottom: 15px;
+}
+.gallery .art-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+.gallery .art-grid .art-card {
+  background-color: #e9e0f0;
+  padding: 10px;
+  border-radius: 12px;
+  position: relative;
+}
+.gallery .art-grid .art-card .guardar {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  font-size: 14px;
+  cursor: pointer;
+}
+.gallery .art-grid .art-card .card-img {
+  width: 100%;
+  height: 190px;
+  border-radius: 8px;
+  background-color: #b0a4ba; /* Color grisáceo/lila temporal */
+}
