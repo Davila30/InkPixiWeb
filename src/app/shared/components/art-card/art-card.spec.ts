@@ -11,6 +11,15 @@ describe('ArtCard', () => {
     }).compileComponents();
 
     fixture = TestBed.createComponent(ArtCard);
+     fixture.componentRef.setInput('artwork', {
+      id: 1,
+      title: 'Sol y nube',
+      imageUrl: null,
+      author: 'Dani Ávila',
+      category: 'Escenarios',
+      price: null,
+      likes: 248,
+    });
     component = fixture.componentInstance;
     await fixture.whenStable();
   });

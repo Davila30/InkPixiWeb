@@ -1,15 +1,5 @@
-@charset "UTF-8";
-@import url("https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap");
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  font-family: Arial, sans-serif;
-  background-color: #E8DDF7;
-  color: #333333;
+:host {
+  display: block;
 }
 
 /* --- NAVBAR --- */
@@ -19,6 +9,9 @@ body {
   align-items: center;
   background-color: #cbbbe3; /* Lila de la barra */
   padding: 12px 40px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 .navbar .logo {
   font-size: 26px;
@@ -178,6 +171,7 @@ body {
 
 /* --- FILTRO Y BUSCADOR --- */
 .search-section {
+  scroll-margin-top: 95px; /* deja sitio a la navbar fija al usar scrollIntoView */
   display: flex;
   align-items: center;
   gap: 15px;
@@ -214,22 +208,52 @@ body {
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
 }
-.gallery .art-grid .art-card {
-  background-color: #e9e0f0;
-  padding: 10px;
-  border-radius: 12px;
-  position: relative;
+.gallery .sentinel {
+  height: 1px;
 }
-.gallery .art-grid .art-card .guardar {
-  position: absolute;
-  top: 14px;
-  right: 14px;
-  font-size: 14px;
+.gallery .estado {
+  font-family: "Caveat", cursive;
+  font-size: 22px;
+  color: #7b5294;
+  text-align: center;
+  margin: 30px 0 10px;
+}
+
+/* --- BOTÓN FLOTANTE DE MENSAJES --- */
+.fab-mensajes {
+  position: fixed;
+  right: 40px;
+  bottom: 30px;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border: none;
+  border-radius: 50%;
+  background-color: #7b5294;
+  color: #ffffff;
   cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  animation: fab-in 0.2s ease-out;
 }
-.gallery .art-grid .art-card .card-img {
-  width: 100%;
-  height: 190px;
-  border-radius: 8px;
-  background-color: #b0a4ba; /* Color grisáceo/lila temporal */
+.fab-mensajes svg {
+  width: 30px;
+  height: 30px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+@keyframes fab-in {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
