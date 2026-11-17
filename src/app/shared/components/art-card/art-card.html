@@ -1,1 +1,41 @@
-<p>art-card</p>
+<article class="art-card">
+  <button
+    class="save-button"
+    type="button"
+    [class.is-saved]="saved"
+    [attr.aria-label]="saved ? 'Quitar de guardados' : 'Guardar ' + artwork.title"
+    [attr.aria-pressed]="saved"
+    (click)="saved = !saved"
+  >
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M6.75 4.75h10.5v15l-5.25-3.5-5.25 3.5v-15Z" />
+    </svg>
+  </button>
+
+  @if (artwork.imageUrl) {
+    <img class="artwork-image" [src]="artwork.imageUrl" [alt]="artwork.title" />
+  } @else {
+    <div class="artwork-image artwork-placeholder" aria-hidden="true"></div>
+  }
+
+  <div class="artwork-details">
+    <h3>{{ artwork.title }}</h3>
+    <p class="artwork-author">por {{ artwork.author }}</p>
+    <p class="artwork-categories">{{ artwork.categories.join(' · ') }}</p>
+
+    <div class="artwork-footer">
+      <span class="likes">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path
+            d="M20.2 8.9c0 4.1-8.2 9.1-8.2 9.1S3.8 13 3.8 8.9a4.1 4.1 0 0 1 7.1-2.8l1.1 1.1 1.1-1.1a4.1 4.1 0 0 1 7.1 2.8Z"
+          />
+        </svg>
+        {{ artwork.likes }}
+      </span>
+      <a class="portfolio-link" [href]="artwork.portfolioUrl">
+        <span>{{ artwork.price }} - Ver portfolio</span>
+        <span aria-hidden="true">↗</span>
+      </a>
+    </div>
+  </div>
+</article>

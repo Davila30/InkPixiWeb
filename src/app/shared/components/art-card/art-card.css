@@ -1,0 +1,145 @@
+@charset "UTF-8";
+
+:host {
+  display: block;
+  min-width: 0;
+}
+
+.art-card {
+  position: relative;
+  height: 100%;
+  padding: 18px;
+  overflow: hidden;
+  border-radius: 20px;
+  background: #eee5f4;
+  color: #382d42;
+}
+
+.save-button {
+  position: absolute;
+  z-index: 1;
+  top: 12px;
+  right: 12px;
+  display: grid;
+  width: 34px;
+  height: 34px;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(238, 229, 244, 0.9);
+  color: #392b45;
+  cursor: pointer;
+}
+
+.save-button svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.8;
+}
+
+.save-button.is-saved svg {
+  fill: currentColor;
+}
+
+.save-button:focus-visible,
+.portfolio-link:focus-visible {
+  outline: 2px solid #76509a;
+  outline-offset: 3px;
+}
+
+.artwork-image {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  background: #b7a5c5;
+}
+
+.artwork-placeholder {
+  background:
+    radial-gradient(ellipse at 50% 58%, #e8c447 0 7%, transparent 7.5%),
+    radial-gradient(ellipse at 50% 57%, #354b46 0 23%, transparent 23.5%),
+    linear-gradient(160deg, transparent 0 28%, #574b82 28% 42%, #386b91 42% 59%, #b8a78d 59% 100%);
+  border: 7px solid #514951;
+  box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.28);
+}
+
+.artwork-details {
+  padding: 16px 2px 0;
+}
+
+.artwork-details h3 {
+  overflow: hidden;
+  margin: 0;
+  color: #382d42;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.35;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.artwork-author,
+.artwork-categories {
+  margin: 5px 0 0;
+  color: #81768a;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.artwork-categories {
+  overflow: hidden;
+  margin-top: 7px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.artwork-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.likes {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 5px;
+  color: #81768a;
+  font-size: 12px;
+}
+
+.likes svg {
+  width: 15px;
+  height: 15px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+}
+
+.portfolio-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: #8050c8;
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+@media (max-width: 420px) {
+  .art-card {
+    padding: 14px;
+  }
+
+  .portfolio-link {
+    font-size: 11px;
+  }
+}

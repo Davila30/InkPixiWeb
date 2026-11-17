@@ -1,1 +1,60 @@
-<p>profile</p>
+<div class="profile-page">
+  <header class="navbar">
+    <a class="logo" href="/" aria-label="InkPixi, inicio">InkPixi!</a>
+
+    <nav class="nav-links" aria-label="Navegación principal">
+      <a href="/">Inicio</a>
+      <a href="#mensajes">Mensajes</a>
+      <a class="active" href="/profile" aria-current="page">Perfil</a>
+    </nav>
+
+    <a class="user-info" href="/profile" aria-label="Ver perfil de MainYuumi">
+      <span class="user-avatar" aria-hidden="true">M</span>
+      <span>MainYuumi</span>
+    </a>
+  </header>
+
+  <main class="profile-content">
+    <section class="artist-profile" aria-labelledby="artist-name">
+      <div class="cover-art" role="img" aria-label="Paisaje ilustrado de fantasía"></div>
+      <div class="artist-info">
+        <div class="artist-avatar" role="img" aria-label="Avatar ilustrado de Dani Ávila"></div>
+        <div class="artist-copy">
+          <h1 id="artist-name">Dani Ávila - &#64;MainYuumi</h1>
+          <p>Dibujante aficionado a los videojuegos y amante de los perros.</p>
+        </div>
+        <button class="contact-button" type="button">Contactar</button>
+      </div>
+    </section>
+
+    <section id="obras" class="featured-section" aria-labelledby="featured-title">
+      <h2 id="featured-title">Obras destacadas</h2>
+      <div class="featured-panel">
+        <h3>Un vistazo a mis mundos</h3>
+        <p class="featured-description">
+          Escenarios, personajes y pequeños refugios. Cada pieza tiene una historia detrás.
+        </p>
+
+        <div class="featured-grid">
+          @for (work of featuredWorks; track work.title) {
+            <article class="featured-work">
+              <div
+                class="featured-art"
+                [class]="'featured-art ' + work.artClass"
+                role="img"
+                [attr.aria-label]="work.title"
+              ></div>
+              <h4>{{ work.title }}</h4>
+              <div class="work-meta">
+                <span>Dani Ávila</span>
+                <span>{{ work.category }}</span>
+              </div>
+            </article>
+          }
+        </div>
+
+        <a class="view-all" href="#obras">Ver todo ↗</a>
+      </div>
+    </section>
+  </main>
+</div>

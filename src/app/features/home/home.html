@@ -3,9 +3,9 @@
         <div class="logo">InkPixi!</div>
 
         <nav class="nav-links">
-          <a href="#" class="active">Inicio</a>
-          <a href="#">Mensajes</a>
-          <a href="#">Perfil</a>
+          <a href="/" class="active">Inicio</a>
+          <a href="#mensajes">Mensajes</a>
+          <a href="/profile">Perfil</a>
         </nav>
 
         <div class="user-info">
@@ -53,22 +53,9 @@
         <section class="gallery">
           <h2>Descubre más arte</h2>
           <div class="art-grid">
-            <div class="art-card">
-              <span class="guardar">🔖</span>
-              <div class="card-img art-1"></div>
-            </div>
-            <div class="art-card">
-              <span class="guardar"></span>
-              <div class="card-img art-2"></div>
-            </div>
-            <div class="art-card">
-              <span class="guardar"></span>
-              <div class="card-img art-3"></div>
-            </div>
-            <div class="art-card">
-              <span class="guardar"></span>
-              <div class="card-img art-4"></div>
-            </div>
+            @for (artwork of artworks; track artwork.title) {
+              <app-art-card [artwork]="artwork" />
+            }
           </div>
         </section>
       </main>

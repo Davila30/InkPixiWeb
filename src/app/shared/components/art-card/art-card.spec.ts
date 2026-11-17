@@ -18,4 +18,33 @@ describe('ArtCard', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should show artwork details and toggle the saved state', () => {
+    component.artwork = {
+      title: 'Gold Token Riftbound',
+      author: 'Dani Avila',
+      categories: ['Personajes', 'Portfolio'],
+      likes: 3578,
+      price: '35€',
+      portfolioUrl: '/portfolio/dani-avila',
+    };
+    fixture.detectChanges();
+
+    const element = fixture.nativeElement as HTMLElement;
+    expect(element.textContent).toContain('Gold Token Riftbound');
+    expect(element.textContent).toContain('Dani Avila');
+    expect(element.textContent).toContain('Personajes · Portfolio');
+    expect(element.textContent).toContain('3578');
+    expect(element.textContent).toContain('35€ - Ver portfolio');
+    expect(element.querySelector('a')?.getAttribute('href')).toBe(
+      '/portfolio/dani-avila',
+    );
+
+    const saveButton = element.querySelector('button') as HTMLButtonElement;
+    saveButton.click();
+    fixture.detectChanges();
+
+    expect(saveButton.getAttribute('aria-pressed')).toBe('true');
+    expect(saveButton.getAttribute('aria-label')).toBe('Quitar de guardados');
+  });
 });
