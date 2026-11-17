@@ -208,7 +208,6 @@
   grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
   gap: 20px;
 }
-<<<<<<< HEAD
 
 @media (max-width: 700px) {
   .container {
@@ -263,10 +262,12 @@
   .gallery .art-grid {
     grid-template-columns: 1fr;
   }
-=======
+}
+
 .gallery .sentinel {
   height: 1px;
 }
+
 .gallery .estado {
   font-family: "Caveat", cursive;
   font-size: 22px;
@@ -302,8 +303,8 @@
   stroke-width: 2;
   stroke-linecap: round;
   stroke-linejoin: round;
->>>>>>> 41ad75e84ffa89a839bdb82410a3dcc596a772ac
 }
+
 @keyframes fab-in {
   from {
     opacity: 0;

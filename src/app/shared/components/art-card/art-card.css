@@ -1,19 +1,13 @@
-<<<<<<< HEAD
-@charset "UTF-8";
-
 :host {
   display: block;
   min-width: 0;
-=======
-:host {
-  display: block;
->>>>>>> 41ad75e84ffa89a839bdb82410a3dcc596a772ac
 }
 
 .art-card {
   position: relative;
-<<<<<<< HEAD
+  display: flex;
   height: 100%;
+  flex-direction: column;
   padding: 18px;
   overflow: hidden;
   border-radius: 20px;
@@ -21,7 +15,7 @@
   color: #382d42;
 }
 
-.save-button {
+.guardar {
   position: absolute;
   z-index: 1;
   top: 12px;
@@ -37,7 +31,7 @@
   cursor: pointer;
 }
 
-.save-button svg {
+.guardar svg {
   width: 18px;
   height: 18px;
   fill: none;
@@ -47,40 +41,48 @@
   stroke-width: 1.8;
 }
 
-.save-button.is-saved svg {
+.guardar.saved svg,
+.likes.liked svg {
   fill: currentColor;
 }
 
-.save-button:focus-visible,
-.portfolio-link:focus-visible {
+.guardar:focus-visible,
+.likes:focus-visible,
+.ver-portfolio:focus-visible {
   outline: 2px solid #76509a;
   outline-offset: 3px;
 }
 
-.artwork-image {
-  display: block;
-  width: 100%;
+.card-img {
+  display: flex;
+  width: 82%;
   aspect-ratio: 3 / 4;
-  object-fit: cover;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  overflow: hidden;
+  border: 7px solid #514951;
   background: #b7a5c5;
 }
 
-.artwork-placeholder {
+.card-img.sin-imagen {
   background:
     radial-gradient(ellipse at 50% 58%, #e8c447 0 7%, transparent 7.5%),
     radial-gradient(ellipse at 50% 57%, #354b46 0 23%, transparent 23.5%),
     linear-gradient(160deg, transparent 0 28%, #574b82 28% 42%, #386b91 42% 59%, #b8a78d 59% 100%);
-  border: 7px solid #514951;
   box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.28);
 }
 
-.artwork-details {
-  padding: 16px 2px 0;
+.card-img img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-.artwork-details h3 {
+.titulo {
   overflow: hidden;
-  margin: 0;
+  margin: 16px 2px 0;
   color: #382d42;
   font-size: 16px;
   font-weight: 700;
@@ -89,27 +91,29 @@
   white-space: nowrap;
 }
 
-.artwork-author,
-.artwork-categories {
-  margin: 5px 0 0;
+.autor,
+.categoria {
+  overflow: hidden;
+  margin: 5px 2px 0;
   color: #81768a;
   font-size: 12px;
   line-height: 1.4;
-}
-
-.artwork-categories {
-  overflow: hidden;
-  margin-top: 7px;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
-.artwork-footer {
+.categoria {
+  margin-top: 7px;
+}
+
+.card-footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 8px;
-  margin-top: 12px;
+  margin: auto 2px 0;
+  padding-top: 12px;
+  font-size: 12px;
 }
 
 .likes {
@@ -117,8 +121,12 @@
   flex: 0 0 auto;
   align-items: center;
   gap: 5px;
+  padding: 0;
+  border: 0;
+  background: transparent;
   color: #81768a;
-  font-size: 12px;
+  font: inherit;
+  cursor: pointer;
 }
 
 .likes svg {
@@ -129,15 +137,26 @@
   stroke-width: 1.8;
 }
 
-.portfolio-link {
+.likes.liked {
+  color: #8050c8;
+}
+
+.acciones {
   display: inline-flex;
   align-items: center;
   gap: 4px;
   color: #8050c8;
-  font-size: 12px;
   font-weight: 700;
-  text-decoration: none;
   white-space: nowrap;
+}
+
+.ver-portfolio {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
 }
 
 @media (max-width: 420px) {
@@ -145,131 +164,7 @@
     padding: 14px;
   }
 
-  .portfolio-link {
+  .card-footer {
     font-size: 11px;
   }
-=======
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  background-color: #e9e0f0;
-  padding: 10px;
-  border-radius: 12px;
-}
-
-/* --- Botón guardar --- */
-.guardar {
-  position: absolute;
-  top: 14px;
-  right: 14px;
-  z-index: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 24px;
-  height: 24px;
-  border: none;
-  border-radius: 8px;
-  background-color: #eedce7;
-  color: #30243f;
-  cursor: pointer;
-}
-.guardar svg {
-  width: 13px;
-  height: 13px;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 2;
-  stroke-linejoin: round;
-}
-.guardar.saved svg {
-  fill: currentColor;
-}
-
-/* --- Imagen --- */
-.card-img {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 190px;
-  border-radius: 8px;
-}
-.card-img.sin-imagen {
-  background-color: #b0a4ba; /* Color grisáceo/lila temporal */
-}
-.card-img img {
-  display: block;
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
-}
-
-/* --- Textos --- */
-.titulo {
-  margin: 14px 4px 0;
-  font-size: 15px;
-  font-weight: bold;
-  color: #30243f;
-}
-.autor {
-  margin: 6px 4px 0;
-  font-size: 12px;
-  color: #9488a1;
-}
-.categoria {
-  margin: 4px 4px 0;
-  font-size: 11px;
-  color: #9b90a8;
-}
-
-/* --- Pie: me gusta y ver portfolio --- */
-.card-footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin: auto 4px 4px;
-  padding-top: 12px;
-  font-size: 12px;
-}
-.likes {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  padding: 0;
-  border: none;
-  background: none;
-  color: #857993;
-  font: inherit;
-  cursor: pointer;
-}
-.likes svg {
-  width: 14px;
-  height: 14px;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 2;
-  stroke-linejoin: round;
-}
-.likes.liked {
-  color: #7b5294;
-}
-.likes.liked svg {
-  fill: currentColor;
-}
-.acciones {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  color: #7b5294;
-  font-weight: bold;
-}
-.ver-portfolio {
-  padding: 0;
-  border: none;
-  background: none;
-  color: inherit;
-  font: inherit;
-  cursor: pointer;
->>>>>>> 41ad75e84ffa89a839bdb82410a3dcc596a772ac
 }
