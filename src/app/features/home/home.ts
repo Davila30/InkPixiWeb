@@ -1,22 +1,23 @@
 import {
-  afterNextRender,
   Component,
   DestroyRef,
-  ElementRef,
+  computed,
   inject,
   signal,
-  viewChild,
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { Router, RouterLink } from '@angular/router';
 import { ArtCard } from '../../shared/components/art-card/art-card';
+import { Footer } from '../../shared/components/footer/footer';
+import { Navbar } from '../../shared/components/navbar/navbar';
 import { Artwork } from '../../shared/models/artwork';
 import { ArtworkService } from '../../shared/services/artwork.service';
 
 const SHOW_MESSAGES_BUTTON_FROM = 300;
 
 @Component({
-  imports: [ArtCard],
   selector: 'app-home',
+  imports: [Navbar, ArtCard, RouterLink, Footer],
   styleUrl: './home.css',
   templateUrl: './home.html',
   host: { '(window:scroll)': 'onScroll()' },
@@ -24,64 +25,43 @@ const SHOW_MESSAGES_BUTTON_FROM = 300;
 export class Home {
   private readonly artworkService = inject(ArtworkService);
   private readonly destroyRef = inject(DestroyRef);
+  private readonly router = inject(Router);
 
   protected readonly artworks = signal<Artwork[]>([]);
-  protected readonly loading = signal(false);
-  protected readonly hasMore = signal(true);
+  readonly searchQuery = signal('');
+  readonly selectedCategory = signal<string>('Todas');
   protected readonly showMessagesButton = signal(false);
 
-  private page = 0;
-  private observer?: IntersectionObserver;
-  private readonly sentinel = viewChild<ElementRef<HTMLElement>>('sentinel');
-  private readonly searchSection = viewChild<ElementRef<HTMLElement>>('searchSection');
+  // Muestra una selección destacada en Home sin saturar con scroll infinito
+  readonly featuredArtworks = computed(() => this.artworks().slice(0, 4));
 
   constructor() {
-    afterNextRender(() => {
-      const el = this.sentinel()?.nativeElement;
-      if (!el) return;
-
-      if (typeof IntersectionObserver === 'undefined') {
-        this.loadMore();
-        return;
-      }
-
-      this.observer = new IntersectionObserver(
-        (entries) => {
-          if (entries.some((entry) => entry.isIntersecting)) this.loadMore();
-        },
-        { rootMargin: '300px 0px' },
-      );
-      this.observer.observe(el);
-      this.destroyRef.onDestroy(() => this.observer?.disconnect());
-    });
+    this.artworkService
+      .getPage(0, 12)
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe((res) => {
+        this.artworks.set(res.items);
+      });
   }
 
   protected onScroll(): void {
-    this.showMessagesButton.set(window.scrollY > SHOW_MESSAGES_BUTTON_FROM);
+    if (typeof window !== 'undefined') {
+      this.showMessagesButton.set(window.scrollY > SHOW_MESSAGES_BUTTON_FROM);
+    }
   }
 
-  protected scrollToGallery(): void {
-    this.searchSection()?.nativeElement.scrollIntoView({ block: 'start' });
+  goToDiscover(event?: Event): void {
+    if (event) event.preventDefault();
+    const query = this.searchQuery().trim();
+    if (query) {
+      this.router.navigate(['/descubrir'], { queryParams: { q: query } });
+    } else {
+      this.router.navigate(['/descubrir']);
+    }
   }
 
-  private loadMore(): void {
-    if (this.loading() || !this.hasMore()) return;
-    this.loading.set(true);
-
-    this.artworkService
-      .getPage(this.page)
-      .pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe((res) => {
-        this.artworks.update((list) => [...list, ...res.items]);
-        this.hasMore.set(res.hasMore);
-        this.page++;
-        this.loading.set(false);
-
-        const el = this.sentinel()?.nativeElement;
-        if (el && res.hasMore) {
-          this.observer?.unobserve(el);
-          this.observer?.observe(el);
-        }
-      });
+  onSearchInput(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    this.searchQuery.set(input.value);
   }
 }

@@ -1,0 +1,65 @@
+<app-navbar />
+
+<main class="container">
+  <header class="discover-header">
+    <span class="subtext">Explora la comunidad</span>
+    <h1>Descubre más arte</h1>
+    <p>Todo lo que imagines tiene su lugar. Filtra y encuentra inspiración entre miles de creadores.</p>
+  </header>
+
+  <!-- Filtro y buscador -->
+  <section class="search-section">
+    <div class="filter-dropdown">
+      <button
+        type="button"
+        class="btn-filter"
+        (click)="toggleFilter()"
+        [attr.aria-expanded]="isFilterOpen()"
+        aria-haspopup="listbox"
+      >
+        Filtrar por: {{ selectedCategory() }} ↓
+      </button>
+
+      @if (isFilterOpen()) {
+        <div class="filter-menu" role="listbox">
+          @for (cat of categories; track cat) {
+            <button
+              type="button"
+              class="filter-option"
+              [class.active]="selectedCategory() === cat"
+              (click)="selectCategory(cat)"
+              role="option"
+              [attr.aria-selected]="selectedCategory() === cat"
+            >
+              {{ cat }}
+            </button>
+          }
+        </div>
+      }
+    </div>
+
+    <input
+      type="text"
+      placeholder="Buscar por título, autor o categoría..."
+      class="search-input"
+      [value]="searchQuery()"
+      (input)="onSearch($event)"
+      aria-label="Buscar obras"
+    />
+  </section>
+
+  <!-- Galería de obras -->
+  <section class="gallery">
+    <div class="art-grid">
+      @for (art of filteredArtworks(); track art.id) {
+        <app-art-card [artwork]="art" />
+      } @empty {
+        <div class="empty-state">
+          <p class="estado">No se han encontrado obras que coincidan con tu búsqueda ✧</p>
+        </div>
+      }
+    </div>
+  </section>
+</main>
+
+<app-footer />
