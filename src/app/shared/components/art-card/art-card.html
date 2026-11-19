@@ -12,13 +12,21 @@
     </svg>
   </button>
 
-  <div class="card-img" [class.sin-imagen]="!artwork().imageUrl">
-    @if (artwork().imageUrl; as url) {
-      <img [src]="url" [alt]="artwork().title" loading="lazy" />
-    }
-  </div>
+  <a
+    class="card-img-link"
+    [routerLink]="['/obra', artwork().id]"
+    [attr.aria-label]="'Ver detalle de ' + artwork().title"
+  >
+    <div class="card-img" [class.sin-imagen]="!artwork().imageUrl">
+      @if (artwork().imageUrl; as url) {
+        <img [src]="url" [alt]="artwork().title" loading="lazy" />
+      }
+    </div>
+  </a>
 
-  <h3 class="titulo">{{ artwork().title }}</h3>
+  <h3 class="titulo">
+    <a class="titulo-link" [routerLink]="['/obra', artwork().id]">{{ artwork().title }}</a>
+  </h3>
   <p class="autor">por {{ artwork().author }}</p>
   <p class="categoria">{{ artwork().category }} · Portfolio</p>
 

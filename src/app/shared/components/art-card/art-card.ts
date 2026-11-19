@@ -1,13 +1,17 @@
-import { ChangeDetectionStrategy, Component, computed, input, output, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject, input, output, signal } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
 import { Artwork } from '../../models/artwork';
 
 @Component({
   selector: 'app-art-card',
+  imports: [RouterLink],
   styleUrl: './art-card.css',
   templateUrl: './art-card.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ArtCard {
+  private readonly router = inject(Router, { optional: true });
+
   readonly artwork = input.required<Artwork>();
   readonly viewPortfolio = output<Artwork>();
 
@@ -25,5 +29,6 @@ export class ArtCard {
 
   protected onViewPortfolio(): void {
     this.viewPortfolio.emit(this.artwork());
+    this.router?.navigate(['/obra', this.artwork().id]);
   }
 }

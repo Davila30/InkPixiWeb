@@ -10,9 +10,9 @@ describe('Discover', () => {
   let fixture: ComponentFixture<Discover>;
 
   const mockArtworks: Artwork[] = [
-    { id: 1, title: 'Sol y nube', imageUrl: null, author: 'Dani Ávila', category: 'Escenarios', price: null, likes: 248 },
-    { id: 2, title: 'Gold Token Riftbound', imageUrl: null, author: 'Dani Ávila', category: 'Personajes', price: 35, likes: 3578 },
-    { id: 3, title: 'Blood Dancer', imageUrl: null, author: 'Dani Ávila', category: 'Criaturas', price: null, likes: 2334 },
+    { id: 1, title: 'Sol y nube', description: 'Desc 1', imageUrl: null, author: 'Dani Ávila', category: 'Escenarios', price: null, likes: 248 },
+    { id: 2, title: 'Gold Token Riftbound', description: 'Desc 2', imageUrl: null, author: 'Dani Ávila', category: 'Personajes', price: 35, likes: 3578 },
+    { id: 3, title: 'Blood Dancer', description: 'Desc 3', imageUrl: null, author: 'Dani Ávila', category: 'Criaturas', price: null, likes: 2334 },
   ];
 
   const mockArtworkService = {

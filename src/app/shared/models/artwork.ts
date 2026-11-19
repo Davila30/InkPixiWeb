@@ -1,6 +1,7 @@
 export interface Artwork {
   id: number;
   title: string;
+  description: string;
 
   imageUrl: string | null;
   author: string;

@@ -48,9 +48,19 @@
 
 .guardar:focus-visible,
 .likes:focus-visible,
-.ver-portfolio:focus-visible {
+.ver-portfolio:focus-visible,
+.card-img-link:focus-visible,
+.titulo-link:focus-visible {
   outline: 2px solid var(--color-primary, #76509a);
   outline-offset: 3px;
+}
+
+.card-img-link {
+  display: flex;
+  justify-content: center;
+  text-decoration: none;
+  color: inherit;
+  width: 100%;
 }
 
 .card-img {
@@ -89,6 +99,16 @@
   line-height: 1.35;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.titulo-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.titulo-link:hover {
+  text-decoration: underline;
+  color: var(--color-primary, #7b5294);
 }
 
 .autor,

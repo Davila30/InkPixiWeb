@@ -12,11 +12,11 @@ import { Artwork } from '../../shared/models/artwork';
 })
 export class Profile {
   protected readonly featuredWorks: Artwork[] = [
-    { id: 101, title: 'Huellas', category: 'Retratos', author: 'Dani Ávila', imageUrl: null, price: null, likes: 142 },
-    { id: 102, title: 'Al bosque', category: 'Escenarios', author: 'Dani Ávila', imageUrl: null, price: 45, likes: 380 },
-    { id: 103, title: 'Arquitectura del bosque', category: 'Diseño de personaje', author: 'Dani Ávila', imageUrl: null, price: null, likes: 215 },
-    { id: 104, title: 'Nuevos aires', category: 'Diseño de personaje', author: 'Dani Ávila', imageUrl: null, price: 60, likes: 512 },
-    { id: 105, title: 'Dark Alleyway #2', category: 'Diseño de personaje', author: 'Dani Ávila', imageUrl: null, price: null, likes: 98 },
-    { id: 106, title: 'Glub Glub', category: 'Criaturas', author: 'Dani Ávila', imageUrl: null, price: 25, likes: 320 },
+    { id: 101, title: 'Huellas', description: 'Retrato intimista que explora la memoria y el paso del tiempo.', category: 'Retratos', author: 'Dani Ávila', imageUrl: null, price: null, likes: 142 },
+    { id: 102, title: 'Al bosque', description: 'Paisaje boscoso envuelto en una suave niebla matinal.', category: 'Escenarios', author: 'Dani Ávila', imageUrl: null, price: 45, likes: 380 },
+    { id: 103, title: 'Arquitectura del bosque', description: 'Concept art de cabañas orgánicas construidas entre raíces centenarias.', category: 'Diseño de personaje', author: 'Dani Ávila', imageUrl: null, price: null, likes: 215 },
+    { id: 104, title: 'Nuevos aires', description: 'Estudio de personaje en movimiento con trajes de viento.', category: 'Diseño de personaje', author: 'Dani Ávila', imageUrl: null, price: 60, likes: 512 },
+    { id: 105, title: 'Dark Alleyway #2', description: 'Escena nocturna cyberpunk con reflejos de lluvia en el asfalto.', category: 'Diseño de personaje', author: 'Dani Ávila', imageUrl: null, price: null, likes: 98 },
+    { id: 106, title: 'Glub Glub', description: 'Criatura marina abisal con bioluminiscencia juguetona.', category: 'Criaturas', author: 'Dani Ávila', imageUrl: null, price: 25, likes: 320 },
   ];
 }
