@@ -11,8 +11,8 @@
   padding: 18px;
   overflow: hidden;
   border-radius: 20px;
-  background: #eee5f4;
-  color: #382d42;
+  background: var(--bg-card, #eee5f4);
+  color: var(--text-main, #382d42);
 }
 
 .guardar {
@@ -27,7 +27,7 @@
   border: 0;
   border-radius: 50%;
   background: rgba(238, 229, 244, 0.9);
-  color: #392b45;
+  color: var(--text-main, #392b45);
   cursor: pointer;
 }
 
@@ -49,7 +49,7 @@
 .guardar:focus-visible,
 .likes:focus-visible,
 .ver-portfolio:focus-visible {
-  outline: 2px solid #76509a;
+  outline: 2px solid var(--color-primary, #76509a);
   outline-offset: 3px;
 }
 
@@ -83,7 +83,7 @@
 .titulo {
   overflow: hidden;
   margin: 16px 2px 0;
-  color: #382d42;
+  color: var(--text-main, #382d42);
   font-size: 16px;
   font-weight: 700;
   line-height: 1.35;
@@ -95,7 +95,7 @@
 .categoria {
   overflow: hidden;
   margin: 5px 2px 0;
-  color: #81768a;
+  color: var(--text-muted, #81768a);
   font-size: 12px;
   line-height: 1.4;
   text-overflow: ellipsis;
@@ -124,7 +124,7 @@
   padding: 0;
   border: 0;
   background: transparent;
-  color: #81768a;
+  color: var(--text-muted, #81768a);
   font: inherit;
   cursor: pointer;
 }
@@ -138,14 +138,14 @@
 }
 
 .likes.liked {
-  color: #8050c8;
+  color: var(--color-accent, #8050c8);
 }
 
 .acciones {
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  color: #8050c8;
+  color: var(--color-accent, #8050c8);
   font-weight: 700;
   white-space: nowrap;
 }

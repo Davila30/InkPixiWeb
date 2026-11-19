@@ -43,7 +43,7 @@
       @if (artwork().price !== null) {
         <span>{{ artwork().price }}€ –</span>
       }
-      <button type="button" class="ver-portfolio">Ver portfolio ↗</button>
+      <button type="button" class="ver-portfolio" (click)="onViewPortfolio()">Ver portfolio ↗</button>
     </span>
   </div>
 </article>
