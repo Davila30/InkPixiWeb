@@ -1,12 +1,48 @@
 @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap');
 
-* {
+/* Josh Comeau Custom CSS Reset */
+*, *::before, *::after {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
 }
 
-/* Scroll suave al pulsar "Explorar trabajos" */
+* {
+  margin: 0;
+}
+
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+input, button, textarea, select {
+  font: inherit;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
+#root, #__next, app-root {
+  isolation: isolate;
+}
+
+/* Variables globales de InkPixi */
+:root {
+  --bg-page: #f2f1f0;
+  --bg-card: #eee5f4;
+  --color-primary: #7b5294;
+  --color-accent: #8050c8;
+  --text-main: #382d42;
+  --text-muted: #81768a;
+  --font-hand: 'Caveat', cursive;
+}
+
+/* Scroll suave */
 html {
   scroll-behavior: smooth;
 }
@@ -19,6 +55,6 @@ html {
 
 body {
   font-family: Arial, sans-serif;
-  background-color: #f2f1f0;
-  color: #333333;
+  background-color: var(--bg-page);
+  color: var(--text-main);
 }
