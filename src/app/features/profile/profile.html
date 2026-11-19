@@ -1,18 +1,5 @@
 <div class="profile-page">
-  <header class="navbar">
-    <a class="logo" href="/" aria-label="InkPixi, inicio">InkPixi!</a>
-
-    <nav class="nav-links" aria-label="Navegación principal">
-      <a href="/">Inicio</a>
-      <a href="#mensajes">Mensajes</a>
-      <a class="active" href="/profile" aria-current="page">Perfil</a>
-    </nav>
-
-    <a class="user-info" href="/profile" aria-label="Ver perfil de MainYuumi">
-      <span class="user-avatar" aria-hidden="true">M</span>
-      <span>MainYuumi</span>
-    </a>
-  </header>
+  <app-navbar />
 
   <main class="profile-content">
     <section class="artist-profile" aria-labelledby="artist-name">
@@ -36,20 +23,8 @@
         </p>
 
         <div class="featured-grid">
-          @for (work of featuredWorks; track work.title) {
-            <article class="featured-work">
-              <div
-                class="featured-art"
-                [class]="'featured-art ' + work.artClass"
-                role="img"
-                [attr.aria-label]="work.title"
-              ></div>
-              <h4>{{ work.title }}</h4>
-              <div class="work-meta">
-                <span>Dani Ávila</span>
-                <span>{{ work.category }}</span>
-              </div>
-            </article>
+          @for (work of featuredWorks; track work.id) {
+            <app-art-card [artwork]="work" />
           }
         </div>
 
@@ -57,4 +32,6 @@
       </div>
     </section>
   </main>
+
+  <app-footer />
 </div>

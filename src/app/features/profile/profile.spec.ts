@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { provideRouter } from '@angular/router';
 import { Profile } from './profile';
 
 describe('Profile', () => {
@@ -8,6 +9,7 @@ describe('Profile', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [Profile],
+      providers: [provideRouter([])],
     }).compileComponents();
 
     fixture = TestBed.createComponent(Profile);
@@ -28,6 +30,6 @@ describe('Profile', () => {
     expect(element.textContent).toContain('Un vistazo a mis mundos');
     expect(element.textContent).toContain('Huellas');
     expect(element.textContent).toContain('Glub Glub');
-    expect(element.querySelectorAll('.featured-work').length).toBe(6);
+    expect(element.querySelectorAll('app-art-card').length).toBe(6);
   });
 });
