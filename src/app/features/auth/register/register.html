@@ -1,137 +1,59 @@
-<main class="auth-page">
-  <section class="auth-layout" aria-label="Crear una cuenta de InkPixi">
-    <aside class="art-panel">
-      <a class="brand" routerLink="/" aria-label="InkPixi, volver al inicio">InkPixi!</a>
+<div class="auth-page">
+  <main class="auth-main">
+    <section class="auth-layout" aria-label="Crear una cuenta de InkPixi">
+      <app-auth-panel />
 
-      <div
-        class="artwork-slot"
-        role="img"
-        aria-label="Espacio reservado para la ilustración de InkPixi"
-      >
-        <span class="artwork-note">tu ilustración aquí</span>
-      </div>
+      <section class="form-panel">
+        <div class="form-content">
+          <p class="form-kicker">Tu rincón creativo te espera</p>
+          <h2>Crea tu cuenta</h2>
+          <p class="form-intro">Únete a la comunidad y comparte todo lo que imaginas.</p>
 
-      <div class="panel-copy">
-        <p class="eyebrow">Un espacio para crear</p>
-        <h1>El hogar de tus ideas</h1>
-        <p>Tu mundo, tus ideas, tu espacio.<br />Todo lo que imaginas tiene su lugar.</p>
-      </div>
-      <span class="panel-decoration" aria-hidden="true">✦</span>
-    </aside>
+          <form>
+            <label for="register-name">Nombre</label>
+            <input
+              id="register-name"
+              type="text"
+              placeholder="¿Cómo te llamas?"
+              autocomplete="name"
+            />
 
-    <section class="form-panel">
-      <div class="form-content">
-        <p class="form-kicker">Tu rincón creativo te espera</p>
-        <h2>Crea tu cuenta</h2>
-        <p class="form-intro">Únete a la comunidad y comparte todo lo que imaginas.</p>
+            <label for="register-email">Correo electrónico</label>
+            <input
+              id="register-email"
+              type="email"
+              placeholder="hola@ejemplo.com"
+              autocomplete="email"
+            />
 
-        <form [formGroup]="registerForm" (ngSubmit)="submit()" novalidate>
-          <label for="register-name">Nombre</label>
-          <input
-            id="register-name"
-            type="text"
-            formControlName="name"
-            placeholder="¿Cómo te llamas?"
-            autocomplete="name"
-            [attr.aria-invalid]="
-              registerForm.controls.name.touched && registerForm.controls.name.invalid
-            "
-          />
-          @if (
-            registerForm.controls.name.touched && registerForm.controls.name.hasError('required')
-          ) {
-            <span class="field-error">Escribe tu nombre.</span>
-          } @else if (
-            registerForm.controls.name.touched && registerForm.controls.name.hasError('minlength')
-          ) {
-            <span class="field-error">El nombre debe tener al menos 2 caracteres.</span>
-          }
+            <label for="register-password">Contraseña</label>
+            <input
+              id="register-password"
+              type="password"
+              placeholder="Mínimo 8 caracteres"
+              autocomplete="new-password"
+            />
 
-          <label for="register-email">Correo electrónico</label>
-          <input
-            id="register-email"
-            type="email"
-            formControlName="email"
-            placeholder="hola@ejemplo.com"
-            autocomplete="email"
-            [attr.aria-invalid]="
-              registerForm.controls.email.touched && registerForm.controls.email.invalid
-            "
-          />
-          @if (
-            registerForm.controls.email.touched && registerForm.controls.email.hasError('required')
-          ) {
-            <span class="field-error">Escribe tu correo electrónico.</span>
-          } @else if (
-            registerForm.controls.email.touched && registerForm.controls.email.hasError('email')
-          ) {
-            <span class="field-error">Introduce un correo electrónico válido.</span>
-          }
+            <label for="register-confirm-password">Confirma tu contraseña</label>
+            <input
+              id="register-confirm-password"
+              type="password"
+              placeholder="Repite tu contraseña"
+              autocomplete="new-password"
+            />
 
-          <label for="register-password">Contraseña</label>
-          <input
-            id="register-password"
-            type="password"
-            formControlName="password"
-            placeholder="Mínimo 8 caracteres"
-            autocomplete="new-password"
-            [attr.aria-invalid]="
-              registerForm.controls.password.touched && registerForm.controls.password.invalid
-            "
-          />
-          @if (
-            registerForm.controls.password.touched &&
-            registerForm.controls.password.hasError('minlength')
-          ) {
-            <span class="field-error">La contraseña debe tener al menos 8 caracteres.</span>
-          } @else if (
-            registerForm.controls.password.touched &&
-            registerForm.controls.password.hasError('required')
-          ) {
-            <span class="field-error">Escribe una contraseña.</span>
-          }
+            <button class="submit-button" type="button" routerLink="/profile">Crear cuenta</button>
+          </form>
 
-          <label for="register-confirm-password">Confirma tu contraseña</label>
-          <input
-            id="register-confirm-password"
-            type="password"
-            formControlName="confirmPassword"
-            placeholder="Repite tu contraseña"
-            autocomplete="new-password"
-            [attr.aria-invalid]="
-              registerForm.controls.confirmPassword.touched &&
-              (registerForm.controls.confirmPassword.invalid ||
-                registerForm.hasError('passwordMismatch'))
-            "
-          />
-          @if (
-            registerForm.controls.confirmPassword.touched &&
-            registerForm.controls.confirmPassword.hasError('required')
-          ) {
-            <span class="field-error">Confirma tu contraseña.</span>
-          } @else if (
-            registerForm.controls.confirmPassword.touched &&
-            registerForm.hasError('passwordMismatch')
-          ) {
-            <span class="field-error">Las contraseñas no coinciden.</span>
-          }
-
-          <button class="submit-button" type="submit">Crear cuenta</button>
-        </form>
-
-        @if (submitted()) {
-          <p class="form-message" role="status">
-            Formulario validado. La creación de cuenta estará disponible al conectar el servidor.
+          <p class="switch-copy">
+            ¿Ya tienes cuenta?
+            <a routerLink="/login">Inicia sesión</a>
           </p>
-        }
-
-        <p class="switch-copy">
-          ¿Ya tienes cuenta?
-          <a routerLink="/login">Inicia sesión</a>
-        </p>
-        <a class="back-link" routerLink="/">← Volver al inicio</a>
-      </div>
+          <a class="back-link" routerLink="/">← Volver al inicio</a>
+        </div>
+      </section>
     </section>
-  </section>
-  <footer class="auth-footer">InkPixi · 2026</footer>
-</main>
+  </main>
+
+  <app-footer />
+</div>

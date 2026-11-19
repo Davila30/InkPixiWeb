@@ -38,22 +38,10 @@
   bottom: -130px;
   background: #d7c3ef;
 }
-
-.brand {
-  color: #7048a0;
-  font-family: 'Caveat', cursive;
-  font-size: 40px;
-  font-weight: 700;
-  line-height: 1;
-  text-decoration: none;
-  text-shadow: 1px 2px 0 #fff;
-  transform: rotate(-5deg);
-  transition: transform 0.2s ease;
-  user-select: none;
-}
-
-.brand:hover {
-  transform: rotate(-2deg) scale(1.05);
+.logo-img {
+  width: 120px;
+  height: auto;
+  margin-bottom: 10px;
 }
 
 .artwork-slot {
@@ -72,10 +60,6 @@
   object-fit: contain;
   filter: drop-shadow(0 6px 14px rgba(112, 72, 160, 0.15));
   transition: transform 0.3s ease;
-}
-
-.artwork-image:hover {
-  transform: scale(1.04);
 }
 
 .panel-copy {

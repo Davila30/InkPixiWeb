@@ -23,7 +23,7 @@ describe('AuthPanel', () => {
 
   it('should display brand and artwork illustration', () => {
     const el = fixture.nativeElement as HTMLElement;
-    expect(el.textContent).toContain('InkPixi!');
+    expect(el.querySelector('.logo-img')?.getAttribute('src')).toBe('/inkPixLogo.png');
     expect(el.textContent).toContain('El hogar de tus ideas');
     expect(el.querySelector('.artwork-slot')).toBeTruthy();
     const img = el.querySelector('.artwork-image') as HTMLImageElement;
