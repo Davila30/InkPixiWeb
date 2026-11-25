@@ -1,0 +1,2894 @@
+This file is a merged representation of the entire codebase, combined into a single document by Repomix.
+
+<file_summary>
+This section contains a summary of this file.
+
+<purpose>
+This file contains a packed representation of the entire repository's contents.
+It is designed to be easily consumable by AI systems for analysis, code review,
+or other automated processes.
+</purpose>
+
+<file_format>
+The content is organized as follows:
+1. This summary section
+2. Repository information
+3. Directory structure
+4. Repository files (if enabled)
+5. Multiple file entries, each consisting of:
+  - File path as an attribute
+  - Full contents of the file
+</file_format>
+
+<usage_guidelines>
+- This file should be treated as read-only. Any changes should be made to the
+  original repository files, not this packed version.
+- When processing this file, use the file path to distinguish
+  between different files in the repository.
+- Be aware that this file may contain sensitive information. Handle it with
+  the same level of security as you would the original repository.
+</usage_guidelines>
+
+<notes>
+- Some files may have been excluded based on .gitignore rules and Repomix's configuration
+- Binary files are not included in this packed representation. Please refer to the Repository Structure section for a complete list of file paths, including binary files
+- Files matching patterns in .gitignore are excluded
+- Files matching default ignore patterns are excluded
+- Files are sorted by Git change count (files with more changes are at the bottom)
+</notes>
+
+</file_summary>
+
+<directory_structure>
+public/
+  auth-illustration.png
+  inkPixLogo.png
+src/
+  app/
+    features/
+      auth/
+        login/
+          login.css
+          login.html
+          login.ts
+        register/
+          register.css
+          register.html
+          register.ts
+      discover/
+        discover.css
+        discover.html
+        discover.spec.ts
+        discover.ts
+      home/
+        home.css
+        home.html
+        home.spec.ts
+        home.ts
+      profile/
+        profile.css
+        profile.html
+        profile.spec.ts
+        profile.ts
+    shared/
+      components/
+        art-card/
+          art-card.css
+          art-card.html
+          art-card.spec.ts
+          art-card.ts
+        auth-panel/
+          auth-panel.css
+          auth-panel.html
+          auth-panel.spec.ts
+          auth-panel.ts
+        footer/
+          footer.css
+          footer.html
+          footer.spec.ts
+          footer.ts
+        navbar/
+          navbar.css
+          navbar.html
+          navbar.spec.ts
+          navbar.ts
+      models/
+        artwork.ts
+      services/
+        artwork.service.ts
+    app.config.ts
+    app.css
+    app.html
+    app.routes.ts
+    app.spec.ts
+    app.ts
+  index.html
+  main.ts
+  styles.css
+.editorconfig
+.gitignore
+.prettierrc
+angular.json
+package.json
+README.md
+tsconfig.app.json
+tsconfig.json
+tsconfig.spec.json
+</directory_structure>
+
+<files>
+This section contains the contents of the repository's files.
+
+<file path="src/app/features/discover/discover.css">
+:host {
+  display: block;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 30px auto;
+  padding: 0 20px;
+}
+
+.discover-header {
+  margin-bottom: 30px;
+}
+
+.subtext {
+  color: var(--color-primary);
+  font-size: 13px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.discover-header h1 {
+  font-family: var(--font-hand);
+  font-size: 48px;
+  color: var(--color-primary);
+  line-height: 1.1;
+  margin: 6px 0;
+}
+
+.discover-header p {
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+.search-section {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 35px;
+  position: relative;
+}
+
+.filter-dropdown {
+  position: relative;
+}
+
+.btn-filter {
+  background-color: #d1bfe8;
+  color: #4a2e61;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.filter-menu {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  min-width: 160px;
+  padding: 6px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  border: 1px solid #e2d9ec;
+}
+
+.filter-option {
+  padding: 8px 12px;
+  border: none;
+  background: transparent;
+  color: var(--text-main);
+  text-align: left;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.filter-option:hover {
+  background: var(--bg-card);
+}
+
+.filter-option.active {
+  background: var(--color-primary);
+  color: #fff;
+  font-weight: bold;
+}
+
+.search-input {
+  width: 380px;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #777;
+  padding: 6px 4px;
+  outline: none;
+  font-size: 15px;
+  color: var(--text-main);
+}
+
+.search-input:focus {
+  border-bottom-color: var(--color-primary);
+}
+
+.art-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 20px;
+}
+
+.empty-state {
+  grid-column: 1 / -1;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.empty-state .estado {
+  font-family: var(--font-hand);
+  font-size: 24px;
+  color: var(--color-primary);
+}
+
+@media (max-width: 700px) {
+  .search-section {
+    flex-wrap: wrap;
+  }
+  .search-input {
+    width: min(100%, 380px);
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 16px;
+  }
+  .art-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</file>
+
+<file path="src/app/features/discover/discover.html">
+<app-navbar />
+
+<main class="container">
+  <header class="discover-header">
+    <span class="subtext">Explora la comunidad</span>
+    <h1>Descubre más arte</h1>
+    <p>Todo lo que imagines tiene su lugar. Filtra y encuentra inspiración entre miles de creadores.</p>
+  </header>
+
+  <!-- Filtro y buscador -->
+  <section class="search-section">
+    <div class="filter-dropdown">
+      <button
+        type="button"
+        class="btn-filter"
+        (click)="toggleFilter()"
+        [attr.aria-expanded]="isFilterOpen()"
+        aria-haspopup="listbox"
+      >
+        Filtrar por: {{ selectedCategory() }} ↓
+      </button>
+
+      @if (isFilterOpen()) {
+        <div class="filter-menu" role="listbox">
+          @for (cat of categories; track cat) {
+            <button
+              type="button"
+              class="filter-option"
+              [class.active]="selectedCategory() === cat"
+              (click)="selectCategory(cat)"
+              role="option"
+              [attr.aria-selected]="selectedCategory() === cat"
+            >
+              {{ cat }}
+            </button>
+          }
+        </div>
+      }
+    </div>
+
+    <input
+      type="text"
+      placeholder="Buscar por título, autor o categoría..."
+      class="search-input"
+      [value]="searchQuery()"
+      (input)="onSearch($event)"
+      aria-label="Buscar obras"
+    />
+  </section>
+
+  <!-- Galería de obras -->
+  <section class="gallery">
+    <div class="art-grid">
+      @for (art of filteredArtworks(); track art.id) {
+        <app-art-card [artwork]="art" />
+      } @empty {
+        <div class="empty-state">
+          <p class="estado">No se han encontrado obras que coincidan con tu búsqueda ✧</p>
+        </div>
+      }
+    </div>
+  </section>
+</main>
+
+<app-footer />
+</file>
+
+<file path="src/app/features/discover/discover.spec.ts">
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { provideRouter } from '@angular/router';
+import { of } from 'rxjs';
+import { Discover } from './discover';
+import { Artwork } from '../../shared/models/artwork';
+import { ArtworkService } from '../../shared/services/artwork.service';
+
+describe('Discover', () => {
+  let component: Discover;
+  let fixture: ComponentFixture<Discover>;
+
+  const mockArtworks: Artwork[] = [
+    { id: 1, title: 'Sol y nube', imageUrl: null, author: 'Dani Ávila', category: 'Escenarios', price: null, likes: 248 },
+    { id: 2, title: 'Gold Token Riftbound', imageUrl: null, author: 'Dani Ávila', category: 'Personajes', price: 35, likes: 3578 },
+    { id: 3, title: 'Blood Dancer', imageUrl: null, author: 'Dani Ávila', category: 'Criaturas', price: null, likes: 2334 },
+  ];
+
+  const mockArtworkService = {
+    getPage: () => of({ items: mockArtworks, hasMore: true }),
+  };
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [Discover],
+      providers: [
+        provideRouter([]),
+        { provide: ArtworkService, useValue: mockArtworkService },
+      ],
+    }).compileComponents();
+
+    fixture = TestBed.createComponent(Discover);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+    await fixture.whenStable();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+
+  it('should load initial artworks and display them', () => {
+    expect(component.filteredArtworks().length).toBe(3);
+  });
+
+  it('should filter by query and category', () => {
+    component.searchQuery.set('Gold');
+    expect(component.filteredArtworks().length).toBe(1);
+
+    component.searchQuery.set('');
+    component.selectCategory('Criaturas');
+    expect(component.filteredArtworks().length).toBe(1);
+    expect(component.filteredArtworks()[0].title).toBe('Blood Dancer');
+  });
+});
+</file>
+
+<file path="src/app/features/discover/discover.ts">
+import {
+  Component,
+  DestroyRef,
+  computed,
+  inject,
+  signal,
+} from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { ActivatedRoute } from '@angular/router';
+import { ArtCard } from '../../shared/components/art-card/art-card';
+import { Footer } from '../../shared/components/footer/footer';
+import { Navbar } from '../../shared/components/navbar/navbar';
+import { Artwork } from '../../shared/models/artwork';
+import { ArtworkService } from '../../shared/services/artwork.service';
+
+@Component({
+  selector: 'app-discover',
+  imports: [Navbar, ArtCard, Footer],
+  styleUrl: './discover.css',
+  templateUrl: './discover.html',
+})
+export class Discover {
+  private readonly artworkService = inject(ArtworkService);
+  private readonly destroyRef = inject(DestroyRef);
+  private readonly route = inject(ActivatedRoute);
+
+  protected readonly artworks = signal<Artwork[]>([]);
+  readonly searchQuery = signal('');
+  readonly selectedCategory = signal<string>('Todas');
+  readonly isFilterOpen = signal(false);
+
+  readonly categories = ['Todas', 'Escenarios', 'Personajes', 'Criaturas'] as const;
+
+  readonly filteredArtworks = computed(() => {
+    const query = this.searchQuery().trim().toLowerCase();
+    const category = this.selectedCategory();
+    const list = this.artworks();
+
+    return list.filter((art) => {
+      const matchesCategory = category === 'Todas' || art.category === category;
+      const matchesQuery =
+        !query ||
+        art.title.toLowerCase().includes(query) ||
+        art.author.toLowerCase().includes(query) ||
+        art.category.toLowerCase().includes(query);
+
+      return matchesCategory && matchesQuery;
+    });
+  });
+
+  constructor() {
+    this.route.queryParams
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe((params) => {
+        if (params['q']) {
+          this.searchQuery.set(params['q']);
+        }
+      });
+
+    this.artworkService
+      .getPage(0, 12)
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe((res) => {
+        this.artworks.set(res.items);
+      });
+  }
+
+  toggleFilter(): void {
+    this.isFilterOpen.update((open) => !open);
+  }
+
+  selectCategory(category: string): void {
+    this.selectedCategory.set(category);
+    this.isFilterOpen.set(false);
+  }
+
+  onSearch(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    this.searchQuery.set(input.value);
+  }
+}
+</file>
+
+<file path="src/app/shared/components/auth-panel/auth-panel.ts">
+import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
+
+@Component({
+  selector: 'app-auth-panel',
+  imports: [RouterLink],
+  templateUrl: './auth-panel.html',
+  styleUrl: './auth-panel.css',
+})
+export class AuthPanel {}
+</file>
+
+<file path="src/app/shared/components/footer/footer.css">
+:host {
+  display: block;
+  width: 100%;
+  margin-top: auto;
+}
+
+.app-footer {
+  width: 100%;
+  padding: 24px 20px;
+  border-top: 1px solid rgba(123, 82, 148, 0.15);
+  text-align: center;
+}
+
+.footer-content {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.footer-copy {
+  color: var(--text-muted, #81768a);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.footer-copy strong {
+  color: var(--color-primary, #7b5294);
+  font-weight: 700;
+}
+
+.footer-copy span {
+  color: var(--text-main, #382d42);
+  font-weight: 600;
+}
+
+@media (max-width: 600px) {
+  .app-footer {
+    padding: 18px 16px;
+  }
+
+  .footer-copy {
+    font-size: 12px;
+  }
+}
+</file>
+
+<file path="src/app/shared/components/footer/footer.html">
+<footer class="app-footer">
+  <div class="footer-content">
+    <p class="footer-copy">
+      <strong>InkPixi</strong> 2026 © Proyecto Intermodular de DAM hecho por
+      <span>Daniel Ávila</span>, <span>Eduardo Heras</span> e <span>Ismael Belhach</span>
+    </p>
+  </div>
+</footer>
+</file>
+
+<file path="src/app/shared/components/footer/footer.spec.ts">
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Footer } from './footer';
+
+describe('Footer', () => {
+  let component: Footer;
+  let fixture: ComponentFixture<Footer>;
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [Footer],
+    }).compileComponents();
+
+    fixture = TestBed.createComponent(Footer);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+    await fixture.whenStable();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+
+  it('should display credits and authors', () => {
+    const el = fixture.nativeElement as HTMLElement;
+    expect(el.textContent).toContain('InkPixi');
+    expect(el.textContent).toContain('2026 © Proyecto Intermodular de DAM');
+    expect(el.textContent).toContain('Daniel Ávila');
+    expect(el.textContent).toContain('Eduardo Heras');
+    expect(el.textContent).toContain('Ismael Belhach');
+  });
+});
+</file>
+
+<file path="src/app/shared/components/footer/footer.ts">
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-footer',
+  imports: [],
+  styleUrl: './footer.css',
+  templateUrl: './footer.html',
+})
+export class Footer {}
+</file>
+
+<file path="src/app/shared/models/artwork.ts">
+export interface Artwork {
+  id: number;
+  title: string;
+
+  imageUrl: string | null;
+  author: string;
+  category: string;
+
+  price: number | null;
+  likes: number;
+}
+</file>
+
+<file path="src/app/shared/services/artwork.service.ts">
+import { Injectable } from '@angular/core';
+import { delay, Observable, of } from 'rxjs';
+import { Artwork } from '../models/artwork';
+
+export interface ArtworkPage {
+  items: Artwork[];
+  hasMore: boolean;
+}
+
+const TOTAL = 48;
+
+const SAMPLES: Omit<Artwork, 'id'>[] = [
+  { title: 'Sol y nube', imageUrl: null, author: 'Dani Ávila', category: 'Escenarios', price: null, likes: 248 },
+  { title: 'Gold Token Riftbound', imageUrl: null, author: 'Dani Ávila', category: 'Personajes', price: 35, likes: 3578 },
+  { title: 'Blood Dancer', imageUrl: null, author: 'Dani Ávila', category: 'Criaturas', price: null, likes: 2334 },
+  { title: 'Ojos de luna', imageUrl: null, author: 'Lucía Moreno', category: 'Personajes', price: null, likes: 912 },
+  { title: 'Tormenta en el mar', imageUrl: null, author: 'Pablo Sánchez', category: 'Escenarios', price: 60, likes: 1540 },
+  { title: 'Guardianes del laboratorio', imageUrl: null, author: 'Marta Iglesias', category: 'Criaturas', price: null, likes: 377 },
+  { title: 'Cañón dorado', imageUrl: null, author: 'Elena Torres', category: 'Escenarios', price: null, likes: 865 },
+  { title: 'Dragón de ceniza', imageUrl: null, author: 'Hugo Vega', category: 'Criaturas', price: 120, likes: 4120 },
+];
+
+@Injectable({ providedIn: 'root' })
+export class ArtworkService {
+
+  getPage(page: number, size = 8): Observable<ArtworkPage> {
+    const start = page * size;
+    const end = Math.min(start + size, TOTAL);
+    const items: Artwork[] = [];
+    for (let n = start; n < end; n++) {
+      const sample = SAMPLES[n % SAMPLES.length];
+      items.push({ ...sample, id: n + 1, likes: sample.likes + n });
+    }
+    return of({ items, hasMore: end < TOTAL }).pipe(delay(600)); // simula la latencia de red
+  }
+}
+</file>
+
+<file path="src/app/app.css">
+
+</file>
+
+<file path=".editorconfig">
+# Editor configuration, see https://editorconfig.org
+root = true
+
+[*]
+charset = utf-8
+indent_style = space
+indent_size = 2
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+[*.ts]
+quote_type = single
+ij_typescript_use_double_quotes = false
+
+[*.md]
+max_line_length = off
+trim_trailing_whitespace = false
+</file>
+
+<file path=".gitignore">
+# See https://docs.github.com/get-started/getting-started-with-git/ignoring-files for more about ignoring files.
+
+# Compiled output
+/dist
+/tmp
+/out-tsc
+/bazel-out
+
+# Node
+/node_modules
+npm-debug.log
+yarn-error.log
+
+# IDEs and editors
+.idea/
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# Visual Studio Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/mcp.json
+.history/*
+
+# Miscellaneous
+/.angular/cache
+.sass-cache/
+/connect.lock
+/coverage
+/libpeerconnection.log
+testem.log
+/typings
+__screenshots__/
+
+# System files
+.DS_Store
+Thumbs.db
+</file>
+
+<file path=".prettierrc">
+{
+  "printWidth": 100,
+  "singleQuote": true,
+  "overrides": [
+    {
+      "files": "*.html",
+      "options": {
+        "parser": "angular"
+      }
+    }
+  ]
+}
+</file>
+
+<file path="README.md">
+# InkpixiWeb
+
+This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.2.6.
+
+## Development server
+
+To start a local development server, run:
+
+```bash
+ng serve
+```
+
+Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+
+## Code scaffolding
+
+Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+
+```bash
+ng generate component component-name
+```
+
+For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+
+```bash
+ng generate --help
+```
+
+## Building
+
+To build the project run:
+
+```bash
+ng build
+```
+
+This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+
+## Running unit tests
+
+To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+
+```bash
+ng test
+```
+
+## Running end-to-end tests
+
+For end-to-end (e2e) testing, run:
+
+```bash
+ng e2e
+```
+
+Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+
+## Additional Resources
+
+For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+</file>
+
+<file path="tsconfig.json">
+/* To learn more about Typescript configuration file: https://www.typescriptlang.org/docs/handbook/tsconfig-json.html. */
+/* To learn more about Angular compiler options: https://angular.dev/reference/configs/angular-compiler-options. */
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "noImplicitOverride": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "skipLibCheck": true,
+    "isolatedModules": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "ES2022",
+    "module": "preserve"
+  },
+  "angularCompilerOptions": {
+    "enableI18nLegacyMessageIdFormat": false,
+    "strictInjectionParameters": true,
+    "strictInputAccessModifiers": true
+  },
+  "files": [],
+  "references": [
+    {
+      "path": "./tsconfig.app.json"
+    },
+    {
+      "path": "./tsconfig.spec.json"
+    }
+  ]
+}
+</file>
+
+<file path="src/app/features/auth/register/register.css">
+@import '../login/login.css';
+</file>
+
+<file path="src/app/features/home/home.spec.ts">
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { provideRouter, Router } from '@angular/router';
+import { of } from 'rxjs';
+import { Home } from './home';
+import { Artwork } from '../../shared/models/artwork';
+import { ArtworkService } from '../../shared/services/artwork.service';
+
+describe('Home', () => {
+  let component: Home;
+  let fixture: ComponentFixture<Home>;
+  let router: Router;
+
+  const mockArtworks: Artwork[] = [
+    { id: 1, title: 'Sol y nube', imageUrl: null, author: 'Dani Ávila', category: 'Escenarios', price: null, likes: 248 },
+    { id: 2, title: 'Gold Token Riftbound', imageUrl: null, author: 'Dani Ávila', category: 'Personajes', price: 35, likes: 3578 },
+    { id: 3, title: 'Blood Dancer', imageUrl: null, author: 'Dani Ávila', category: 'Criaturas', price: null, likes: 2334 },
+    { id: 4, title: 'Ojos de luna', imageUrl: null, author: 'Lucía Moreno', category: 'Personajes', price: null, likes: 912 },
+    { id: 5, title: 'Tormenta en el mar', imageUrl: null, author: 'Pablo Sánchez', category: 'Escenarios', price: 60, likes: 1540 },
+  ];
+
+  const mockArtworkService = {
+    getPage: () => of({ items: mockArtworks, hasMore: true }),
+  };
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [Home],
+      providers: [
+        provideRouter([]),
+        { provide: ArtworkService, useValue: mockArtworkService },
+      ],
+    }).compileComponents();
+
+    router = TestBed.inject(Router);
+    fixture = TestBed.createComponent(Home);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+    await fixture.whenStable();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+
+  it('should display featured artworks without infinite scroll in home', () => {
+    expect(component.featuredArtworks().length).toBe(4);
+    const element = fixture.nativeElement as HTMLElement;
+    expect(element.textContent).toContain('Obras destacadas');
+    expect(element.textContent).toContain('Ver todas en Descubrir ↗');
+  });
+
+  it('should navigate to /descubrir on goToDiscover', () => {
+    const navigateSpy = vi.spyOn(router, 'navigate');
+    component.searchQuery.set('dragón');
+    component.goToDiscover();
+
+    expect(navigateSpy).toHaveBeenCalledWith(['/descubrir'], { queryParams: { q: 'dragón' } });
+  });
+});
+</file>
+
+<file path="src/app/shared/components/auth-panel/auth-panel.css">
+:host {
+  display: contents;
+}
+
+.art-panel {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  overflow: hidden;
+  padding: 34px 32px 42px;
+  text-align: center;
+  background: #f0e2e9;
+}
+
+.art-panel::before,
+.art-panel::after {
+  position: absolute;
+  z-index: -1;
+  content: '';
+  border-radius: 50%;
+}
+
+.art-panel::before {
+  width: 460px;
+  height: 330px;
+  top: -160px;
+  left: -100px;
+  background: #e4d1e5;
+}
+
+.art-panel::after {
+  width: 480px;
+  height: 250px;
+  right: -210px;
+  bottom: -130px;
+  background: #d7c3ef;
+}
+.logo-img {
+  width: 120px;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.artwork-slot {
+  position: relative;
+  width: min(100%, 340px);
+  height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px 0;
+}
+
+.artwork-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 6px 14px rgba(112, 72, 160, 0.15));
+  transition: transform 0.3s ease;
+}
+
+.panel-copy {
+  margin-top: 10px;
+}
+
+.eyebrow {
+  color: #8757ab;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.panel-copy h1 {
+  margin: 6px 0;
+  color: #5e3b78;
+  font-family: 'Caveat', cursive;
+  font-size: 38px;
+  font-weight: 600;
+}
+
+.panel-copy > p:last-child {
+  color: #786b7e;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.panel-decoration {
+  position: absolute;
+  top: 50%;
+  right: 24px;
+  color: #fff;
+  font-size: 20px;
+}
+
+@media (max-width: 700px) {
+  .art-panel {
+    min-height: 330px;
+    padding: 24px 22px;
+  }
+
+  .artwork-slot {
+    width: 240px;
+    height: 160px;
+    margin: 6px 0;
+  }
+
+  .panel-copy {
+    margin-top: 8px;
+  }
+
+  .panel-copy h1 {
+    margin: 4px 0;
+    font-size: 30px;
+  }
+
+  .panel-copy > p:last-child {
+    font-size: 11px;
+  }
+
+  .panel-decoration {
+    display: none;
+  }
+}
+</file>
+
+<file path="src/app/shared/components/auth-panel/auth-panel.html">
+<aside class="art-panel">
+  <a class="logo" routerLink="/" aria-label="InkPixi, volver al inicio">
+    <img src="/inkPixLogo.png" alt="InkPixi Logo" class="logo-img" />
+  </a>
+
+  <div class="artwork-slot">
+    <img
+      src="/auth-illustration.png"
+      alt="Ilustración InkPixi: artista dibujando en su mesa"
+      class="artwork-image"
+    />
+  </div>
+
+  <div class="panel-copy">
+    <p class="eyebrow">Un espacio para crear</p>
+    <h1>El hogar de tus ideas</h1>
+    <p>Tu mundo, tus ideas, tu espacio.<br />Todo lo que imaginas tiene su lugar.</p>
+  </div>
+  <span class="panel-decoration" aria-hidden="true">✦</span>
+</aside>
+</file>
+
+<file path="src/app/shared/components/auth-panel/auth-panel.spec.ts">
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { provideRouter } from '@angular/router';
+import { AuthPanel } from './auth-panel';
+
+describe('AuthPanel', () => {
+  let component: AuthPanel;
+  let fixture: ComponentFixture<AuthPanel>;
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [AuthPanel],
+      providers: [provideRouter([])],
+    }).compileComponents();
+
+    fixture = TestBed.createComponent(AuthPanel);
+    component = fixture.componentInstance;
+    await fixture.whenStable();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+
+  it('should display brand and artwork illustration', () => {
+    const el = fixture.nativeElement as HTMLElement;
+    expect(el.querySelector('.logo-img')?.getAttribute('src')).toBe('/inkPixLogo.png');
+    expect(el.textContent).toContain('El hogar de tus ideas');
+    expect(el.querySelector('.artwork-slot')).toBeTruthy();
+    const img = el.querySelector('.artwork-image') as HTMLImageElement;
+    expect(img).toBeTruthy();
+    expect(img.getAttribute('src')).toBe('/auth-illustration.png');
+  });
+});
+</file>
+
+<file path="src/app/shared/components/navbar/navbar.css">
+:host {
+  display: block;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 58px;
+  padding: 10px 36px;
+  background-color: #cbb8e8;
+  box-shadow: 0 2px 10px rgba(74, 59, 105, 0.08);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  user-select: none;
+}
+
+.logo-img {
+  height: 100px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.nav-links a {
+  padding: 6px 16px;
+  border-radius: 20px;
+  color: #342d3b;
+  font-size: 13px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.nav-links a:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+  color: #543575;
+}
+
+.nav-links a.active {
+  background-color: #ffffff;
+  color: #543575;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #342d3b;
+  font-size: 13px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.user-info:hover {
+  opacity: 0.85;
+}
+
+.user-avatar {
+  display: grid;
+  width: 36px;
+  height: 36px;
+  place-items: center;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  background:
+    radial-gradient(ellipse at 50% 70%, #e8ba86 0 23%, transparent 24%),
+    radial-gradient(circle at 50% 38%, #493d62 0 27%, transparent 28%),
+    linear-gradient(140deg, #7d98ac, #574276 55%, #c47e62);
+  color: white;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+@media (max-width: 680px) {
+  .navbar {
+    padding: 8px 16px;
+  }
+
+  .nav-links {
+    gap: 6px;
+  }
+
+  .nav-links a {
+    padding: 5px 10px;
+    font-size: 12px;
+  }
+
+  .user-info span:not(.user-avatar) {
+    display: none;
+  }
+}
+</file>
+
+<file path="src/app/shared/components/navbar/navbar.html">
+<header class="navbar">
+  <a class="logo" routerLink="/" aria-label="InkPixi, volver al inicio">
+    <img src="/inkPixLogo.png" alt="InkPixi Logo" class="logo-img" />
+  </a>
+
+  <nav class="nav-links" aria-label="Navegación principal">
+    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Inicio</a>
+    <a routerLink="/descubrir" routerLinkActive="active">Descubrir</a>
+    <a routerLink="/profile" routerLinkActive="active">Perfil</a>
+    <a routerLink="/login" routerLinkActive="active">Entrar / Registro</a>
+  </nav>
+
+  <a class="user-info" routerLink="/profile" aria-label="Ver perfil de MainYuumi">
+    <span class="user-avatar" aria-hidden="true">M</span>
+    <span>MainYuumi</span>
+  </a>
+</header>
+</file>
+
+<file path="src/app/shared/components/navbar/navbar.spec.ts">
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { provideRouter } from '@angular/router';
+import { Navbar } from './navbar';
+
+describe('Navbar', () => {
+  let component: Navbar;
+  let fixture: ComponentFixture<Navbar>;
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [Navbar],
+      providers: [provideRouter([])],
+    }).compileComponents();
+
+    fixture = TestBed.createComponent(Navbar);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+    await fixture.whenStable();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+
+  it('should render navigation links including Descubrir', () => {
+    const el = fixture.nativeElement as HTMLElement;
+    expect(el.textContent).toContain('Inicio');
+    expect(el.textContent).toContain('Descubrir');
+    expect(el.textContent).toContain('Perfil');
+    expect(el.textContent).toContain('Entrar / Registro');
+  });
+
+  it('should render the logo image', () => {
+    const el = fixture.nativeElement as HTMLElement;
+    const img = el.querySelector('.logo-img') as HTMLImageElement;
+    expect(img).toBeTruthy();
+    expect(img.getAttribute('src')).toBe('/inkPixLogo.png');
+  });
+});
+</file>
+
+<file path="src/app/app.config.ts">
+import { ApplicationConfig, provideBrowserGlobalErrorListeners } from '@angular/core';
+import { provideRouter } from '@angular/router';
+import { routes } from './app.routes';
+
+export const appConfig: ApplicationConfig = {
+  providers: [provideBrowserGlobalErrorListeners(), provideRouter(routes)],
+};
+</file>
+
+<file path="src/app/app.html">
+<router-outlet></router-outlet>
+</file>
+
+<file path="src/app/app.ts">
+import { Component, signal } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
+
+@Component({
+  imports: [RouterOutlet],
+  selector: 'app-root',
+  styleUrl: './app.css',
+  templateUrl: './app.html',
+})
+export class App {
+  protected readonly title = signal('inkpixi-web');
+}
+</file>
+
+<file path="src/main.ts">
+import { bootstrapApplication } from '@angular/platform-browser';
+import { appConfig } from './app/app.config';
+import { App } from './app/app';
+
+bootstrapApplication(App, appConfig).catch((err) => console.error(err));
+</file>
+
+<file path="package.json">
+{
+  "name": "inkpixi-web",
+  "version": "0.0.0",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "watch": "ng build --watch --configuration development",
+    "test": "ng test"
+  },
+  "private": true,
+  "packageManager": "npm@12.2.0",
+  "dependencies": {
+    "@angular/common": "^22.2.0",
+    "@angular/compiler": "^22.2.0",
+    "@angular/core": "^22.2.0",
+    "@angular/forms": "^22.2.0",
+    "@angular/platform-browser": "^22.2.0",
+    "@angular/router": "^22.2.0",
+    "rxjs": "~7.8.0",
+    "tslib": "^2.3.0"
+  },
+  "devDependencies": {
+    "@angular/build": "^22.2.6",
+    "@angular/cli": "^22.2.6",
+    "@angular/compiler-cli": "^22.2.0",
+    "jsdom": "^30.0.0",
+    "prettier": "^3.8.1",
+    "typescript": "~6.0.2",
+    "vitest": "^5.0.0"
+  }
+}
+</file>
+
+<file path="tsconfig.app.json">
+/* To learn more about Typescript configuration file: https://www.typescriptlang.org/docs/handbook/tsconfig-json.html. */
+/* To learn more about Angular compiler options: https://angular.dev/reference/configs/angular-compiler-options. */
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "types": []
+  },
+  "include": ["src/**/*.ts"],
+  "exclude": ["src/**/*.spec.ts"]
+}
+</file>
+
+<file path="tsconfig.spec.json">
+/* To learn more about Typescript configuration file: https://www.typescriptlang.org/docs/handbook/tsconfig-json.html. */
+/* To learn more about Angular compiler options: https://angular.dev/reference/configs/angular-compiler-options. */
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "types": ["vitest/globals"]
+  },
+  "include": ["src/**/*.d.ts", "src/**/*.spec.ts"]
+}
+</file>
+
+<file path="src/app/features/auth/login/login.css">
+:host {
+  display: block;
+  min-height: 100vh;
+}
+
+.auth-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #49365b;
+  background: #f5f2f1;
+}
+
+.auth-main {
+  flex: 1;
+  display: grid;
+  place-items: center;
+  padding: 36px 24px;
+  width: 100%;
+}
+
+.auth-layout {
+  width: min(100%, 980px);
+  min-height: 610px;
+  display: grid;
+  grid-template-columns: 0.94fr 1.06fr;
+  overflow: hidden;
+  border-radius: 22px;
+  background: #fff;
+  box-shadow: 0 24px 70px #44305218;
+}
+
+.form-panel {
+  display: grid;
+  place-items: center;
+  padding: 56px clamp(28px, 7vw, 82px);
+  background: #fff;
+}
+
+.form-content {
+  width: min(100%, 360px);
+}
+
+.form-content h2 {
+  margin: 9px 0 8px;
+  color: #463151;
+  font-size: 30px;
+  letter-spacing: -0.04em;
+}
+
+.form-intro {
+  margin-bottom: 32px;
+  color: #8a818d;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin: 0 0 8px;
+  color: #55485d;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+input {
+  width: 100%;
+  height: 46px;
+  margin-bottom: 20px;
+  padding: 0 14px;
+  border: 1px solid #e8e1eb;
+  border-radius: 9px;
+  outline: none;
+  background: #fcfafc;
+  color: #423649;
+  font: inherit;
+  font-size: 13px;
+  transition:
+    border-color 160ms ease,
+    box-shadow 160ms ease;
+}
+
+input::placeholder {
+  color: #b2aab5;
+}
+
+input:focus {
+  border-color: #9c72bd;
+  box-shadow: 0 0 0 3px #9c72bd20;
+}
+
+input[aria-invalid='true'] {
+  border-color: #c65e78;
+}
+
+.field-error {
+  margin: -14px 0 14px;
+  color: #ae405c;
+  font-size: 11px;
+}
+
+.submit-button {
+  min-height: 46px;
+  margin-top: 6px;
+  border: 0;
+  border-radius: 24px;
+  background: #8052b2;
+  color: #fff;
+  cursor: pointer;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  box-shadow: 0 8px 18px #8052b233;
+  transition:
+    background 160ms ease,
+    transform 160ms ease;
+}
+
+.submit-button:hover {
+  transform: translateY(-1px);
+  background: #70449f;
+}
+
+.submit-button:focus-visible,
+a:focus-visible {
+  outline: 3px solid #b995d3;
+  outline-offset: 3px;
+}
+
+.form-message {
+  margin-top: 16px;
+  padding: 11px 13px;
+  border-radius: 9px;
+  background: #f1eaf7;
+  color: #64477b;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.switch-copy {
+  margin-top: 26px;
+  color: #8a818d;
+  font-size: 12px;
+  text-align: center;
+}
+
+.switch-copy a,
+.back-link {
+  color: #7950a2;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.switch-copy a:hover,
+.back-link:hover {
+  text-decoration: underline;
+}
+
+.back-link {
+  display: block;
+  margin-top: 28px;
+  color: #958b9a;
+  font-size: 11px;
+  text-align: center;
+}
+
+@media (max-width: 700px) {
+  .auth-main {
+    padding: 16px 12px;
+  }
+
+  .auth-layout {
+    width: min(100%, 460px);
+    grid-template-columns: 1fr;
+  }
+
+  .form-panel {
+    padding: 42px 28px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+  }
+}
+</file>
+
+<file path="src/app/features/auth/login/login.html">
+<div class="auth-page">
+  <main class="auth-main">
+    <section class="auth-layout" aria-label="Iniciar sesión en InkPixi">
+      <app-auth-panel />
+
+      <section class="form-panel">
+        <div class="form-content">
+          <p class="form-kicker">Qué alegría tenerte de vuelta</p>
+          <h2>Inicia sesión</h2>
+          <p class="form-intro">Entra en tu espacio creativo y sigue donde lo dejaste.</p>
+
+          <form>
+            <label for="login-email">Correo electrónico</label>
+            <input
+              id="login-email"
+              type="email"
+              placeholder="hola@ejemplo.com"
+              autocomplete="email"
+            />
+
+            <label for="login-password">Contraseña</label>
+            <input
+              id="login-password"
+              type="password"
+              placeholder="Tu contraseña"
+              autocomplete="current-password"
+            />
+
+            <button class="submit-button" type="button" routerLink="/profile">Iniciar sesión</button>
+          </form>
+
+          <p class="switch-copy">
+            ¿Aún no tienes cuenta?
+            <a routerLink="/register">Regístrate</a>
+          </p>
+          <a class="back-link" routerLink="/">← Volver al inicio</a>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <app-footer />
+</div>
+</file>
+
+<file path="src/app/features/auth/login/login.ts">
+import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
+import { AuthPanel } from '../../../shared/components/auth-panel/auth-panel';
+import { Footer } from '../../../shared/components/footer/footer';
+
+@Component({
+  selector: 'app-login',
+  imports: [RouterLink, AuthPanel, Footer],
+  styleUrl: './login.css',
+  templateUrl: './login.html',
+})
+export class Login {}
+</file>
+
+<file path="src/app/features/auth/register/register.html">
+<div class="auth-page">
+  <main class="auth-main">
+    <section class="auth-layout" aria-label="Crear una cuenta de InkPixi">
+      <app-auth-panel />
+
+      <section class="form-panel">
+        <div class="form-content">
+          <p class="form-kicker">Tu rincón creativo te espera</p>
+          <h2>Crea tu cuenta</h2>
+          <p class="form-intro">Únete a la comunidad y comparte todo lo que imaginas.</p>
+
+          <form>
+            <label for="register-name">Nombre</label>
+            <input
+              id="register-name"
+              type="text"
+              placeholder="¿Cómo te llamas?"
+              autocomplete="name"
+            />
+
+            <label for="register-email">Correo electrónico</label>
+            <input
+              id="register-email"
+              type="email"
+              placeholder="hola@ejemplo.com"
+              autocomplete="email"
+            />
+
+            <label for="register-password">Contraseña</label>
+            <input
+              id="register-password"
+              type="password"
+              placeholder="Mínimo 8 caracteres"
+              autocomplete="new-password"
+            />
+
+            <label for="register-confirm-password">Confirma tu contraseña</label>
+            <input
+              id="register-confirm-password"
+              type="password"
+              placeholder="Repite tu contraseña"
+              autocomplete="new-password"
+            />
+
+            <button class="submit-button" type="button" routerLink="/profile">Crear cuenta</button>
+          </form>
+
+          <p class="switch-copy">
+            ¿Ya tienes cuenta?
+            <a routerLink="/login">Inicia sesión</a>
+          </p>
+          <a class="back-link" routerLink="/">← Volver al inicio</a>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <app-footer />
+</div>
+</file>
+
+<file path="src/app/features/auth/register/register.ts">
+import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
+import { AuthPanel } from '../../../shared/components/auth-panel/auth-panel';
+import { Footer } from '../../../shared/components/footer/footer';
+
+@Component({
+  selector: 'app-register',
+  imports: [RouterLink, AuthPanel, Footer],
+  styleUrl: './register.css',
+  templateUrl: './register.html',
+})
+export class Register {}
+</file>
+
+<file path="src/app/features/profile/profile.css">
+:host {
+  display: block;
+  min-height: 100vh;
+}
+
+.profile-page {
+  min-height: 100vh;
+  background: #f3f1f0;
+  color: #342d3b;
+  font-family: Arial, sans-serif;
+}
+
+.profile-content {
+  width: min(1200px, 100%);
+  margin: 0 auto;
+  padding: 16px 20px 32px;
+}
+
+.artist-profile {
+  position: relative;
+  padding: 16px;
+  border-radius: 28px;
+  background: #e8dcf5;
+}
+
+.cover-art {
+  height: clamp(110px, 16vw, 190px);
+  border-radius: 12px;
+  background:
+    radial-gradient(ellipse at 12% 20%, rgba(255, 255, 255, 0.9) 0 9%, transparent 22%),
+    radial-gradient(ellipse at 76% 18%, rgba(222, 243, 255, 0.8) 0 5%, transparent 24%),
+    linear-gradient(170deg, transparent 0 45%, #8ec5d9 46% 52%, transparent 53%),
+    linear-gradient(160deg, transparent 0 50%, #56a4c5 51% 66%, transparent 67%),
+    linear-gradient(145deg, #b9e3f4 0 38%, #80c4e6 50%, #3b8fba 74%, #26648e 100%);
+  overflow: hidden;
+}
+
+.artist-info {
+  display: flex;
+  min-height: 100px;
+  align-items: center;
+  gap: 20px;
+  padding: 12px 30px 4px 230px;
+}
+
+.artist-avatar {
+  position: absolute;
+  bottom: -28px;
+  left: 28px;
+  width: 150px;
+  aspect-ratio: 1;
+  border: 4px solid #e8dcf5;
+  border-radius: 50%;
+  background:
+    radial-gradient(ellipse at 50% 55%, #f6d2a3 0 17%, transparent 18%),
+    radial-gradient(ellipse at 50% 82%, #ae6d44 0 29%, transparent 30%),
+    radial-gradient(ellipse at 50% 44%, #362e50 0 35%, transparent 36%),
+    radial-gradient(circle at 50% 50%, #f2c07f 0 58%, #76518f 59% 100%);
+  box-shadow: 0 3px 8px rgba(48, 34, 57, 0.2);
+}
+
+.artist-copy {
+  min-width: 0;
+  flex: 1;
+}
+
+.artist-copy h1 {
+  margin: 0 0 5px;
+  font-size: clamp(18px, 2vw, 24px);
+  line-height: 1.2;
+}
+
+.artist-copy p {
+  max-width: 500px;
+  margin: 0;
+  color: #776b82;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.contact-button {
+  display: inline-flex;
+  min-width: 150px;
+  min-height: 40px;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 24px;
+  background: #8051bc;
+  color: white;
+  font: inherit;
+  font-size: 13px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.contact-button:hover {
+  background: #6d40aa;
+}
+
+.featured-section {
+  margin-top: 28px;
+}
+
+.featured-section > h2 {
+  margin: 0 0 12px;
+  color: #938b91;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.featured-panel {
+  padding: 14px;
+  border: 1px solid #d5ced4;
+  border-radius: 12px;
+  background: #fcfaf9;
+  box-shadow: 0 2px 3px rgba(41, 31, 45, 0.12);
+}
+
+.featured-panel h3 {
+  margin: 0 0 3px;
+  font-size: 14px;
+}
+
+.featured-description {
+  margin: 0 0 10px;
+  color: #766d79;
+  font-size: 11px;
+}
+
+.featured-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.featured-work {
+  min-width: 0;
+  overflow: hidden;
+  border-radius: 8px;
+  background: white;
+  box-shadow: 0 2px 6px rgba(48, 39, 51, 0.16);
+}
+
+.featured-art {
+  position: relative;
+  height: 112px;
+  overflow: hidden;
+  background-color: #ded8d2;
+}
+
+.featured-art::before,
+.featured-art::after {
+  position: absolute;
+  content: "";
+}
+
+.featured-art::before {
+  top: 16%;
+  left: 36%;
+  width: 28%;
+  height: 75%;
+  border-radius: 50% 50% 30% 30%;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.16), rgba(255, 255, 255, 0.22), rgba(0, 0, 0, 0.18));
+}
+
+.featured-art::after {
+  inset: auto 0 0;
+  height: 24%;
+  background: linear-gradient(transparent, rgba(28, 22, 32, 0.25));
+}
+
+.art-portrait {
+  background:
+    radial-gradient(ellipse at 52% 42%, #c4bcb5 0 13%, transparent 14%),
+    linear-gradient(130deg, #ece9e6, #a9a5a2 60%, #d7d2ce);
+  filter: grayscale(1);
+}
+
+.art-forest {
+  background:
+    radial-gradient(ellipse at 50% 90%, #f6c673 0 4%, transparent 5%),
+    linear-gradient(180deg, #574ba2, #eb8cb8 52%, #183c48);
+}
+
+.art-forest::before {
+  top: 32%;
+  width: 100%;
+  height: 70%;
+  border-radius: 55% 55% 0 0;
+  background: repeating-linear-gradient(90deg, #142d3e 0 8%, transparent 8% 18%);
+}
+
+.art-sketch {
+  background: repeating-linear-gradient(125deg, #eee7dc 0 8px, #d6cec2 9px 10px);
+}
+
+.art-sketch::before {
+  border: 2px solid #423a35;
+  background: transparent;
+  transform: rotate(-12deg);
+}
+
+.art-figure {
+  background: linear-gradient(115deg, #d3d0ca, #aaa7a2);
+  filter: grayscale(1);
+}
+
+.art-figure::before {
+  left: 42%;
+  width: 18%;
+  background: linear-gradient(#706a65 0 24%, transparent 25% 35%, #706a65 36% 100%);
+}
+
+.art-dark {
+  background: radial-gradient(ellipse at center, #645875, #191720 72%);
+}
+
+.art-dark::before {
+  background: linear-gradient(90deg, #211d28, #a49bad 48%, #211d28);
+  box-shadow: 20px 12px 0 -7px #17151d, -22px 18px 0 -8px #17151d;
+}
+
+.art-creature {
+  background:
+    radial-gradient(circle at 66% 38%, #f8f6f1 0 3%, transparent 3.5%),
+    radial-gradient(circle at 52% 40%, #f8f6f1 0 3%, transparent 3.5%),
+    linear-gradient(135deg, #eeeae2, #b9c1bf);
+  filter: grayscale(0.65);
+}
+
+.art-creature::before {
+  left: 25%;
+  width: 50%;
+  border-radius: 48% 48% 40% 40%;
+  background: #f7f6f2;
+  box-shadow: inset 0 0 0 2px #8d9290;
+}
+
+.featured-work h4 {
+  overflow: hidden;
+  margin: 6px 6px 3px;
+  font-size: 10px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.work-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 4px;
+  padding: 0 6px 7px;
+  color: #8d8296;
+  font-size: 8px;
+}
+
+.work-meta span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.work-meta span:first-child,
+.view-all {
+  color: #8051bc;
+}
+
+.view-all {
+  display: inline-block;
+  margin-top: 12px;
+  font-size: 10px;
+  text-decoration: none;
+}
+
+.nav-links a:focus-visible,
+.user-info:focus-visible,
+.logo:focus-visible,
+.contact-button:focus-visible,
+.view-all:focus-visible {
+  outline: 2px solid #76509a;
+  outline-offset: 3px;
+}
+
+@media (max-width: 600px) {
+  .navbar {
+    grid-template-columns: 1fr auto;
+    padding: 6px 14px;
+  }
+
+  .nav-links {
+    grid-row: 2;
+    grid-column: 1 / -1;
+    justify-content: center;
+  }
+
+  .profile-content {
+    padding: 12px;
+  }
+
+  .artist-profile {
+    padding: 10px;
+    border-radius: 20px;
+  }
+
+  .cover-art {
+    height: 125px;
+  }
+
+  .artist-info {
+    min-height: 0;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 76px 8px 8px;
+  }
+
+  .artist-avatar {
+    bottom: auto;
+    top: 68px;
+    left: 20px;
+    width: 100px;
+  }
+
+  .artist-copy {
+    flex-basis: 100%;
+    padding-left: 108px;
+  }
+
+  .artist-copy h1 {
+    font-size: 17px;
+  }
+
+  .artist-copy p {
+    font-size: 12px;
+  }
+
+  .contact-button {
+    width: 100%;
+    min-height: 36px;
+  }
+
+  .featured-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 360px) {
+  .featured-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</file>
+
+<file path="src/app/features/profile/profile.html">
+<div class="profile-page">
+  <app-navbar />
+
+  <main class="profile-content">
+    <section class="artist-profile" aria-labelledby="artist-name">
+      <div class="cover-art" role="img" aria-label="Paisaje ilustrado de fantasía"></div>
+      <div class="artist-info">
+        <div class="artist-avatar" role="img" aria-label="Avatar ilustrado de Dani Ávila"></div>
+        <div class="artist-copy">
+          <h1 id="artist-name">Dani Ávila - &#64;MainYuumi</h1>
+          <p>Dibujante aficionado a los videojuegos y amante de los perros.</p>
+        </div>
+        <button class="contact-button" type="button">Contactar</button>
+      </div>
+    </section>
+
+    <section id="obras" class="featured-section" aria-labelledby="featured-title">
+      <h2 id="featured-title">Obras destacadas</h2>
+      <div class="featured-panel">
+        <h3>Un vistazo a mis mundos</h3>
+        <p class="featured-description">
+          Escenarios, personajes y pequeños refugios. Cada pieza tiene una historia detrás.
+        </p>
+
+        <div class="featured-grid">
+          @for (work of featuredWorks; track work.id) {
+            <app-art-card [artwork]="work" />
+          }
+        </div>
+
+        <a class="view-all" href="#obras">Ver todo ↗</a>
+      </div>
+    </section>
+  </main>
+
+  <app-footer />
+</div>
+</file>
+
+<file path="src/app/features/profile/profile.spec.ts">
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { provideRouter } from '@angular/router';
+import { Profile } from './profile';
+
+describe('Profile', () => {
+  let component: Profile;
+  let fixture: ComponentFixture<Profile>;
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [Profile],
+      providers: [provideRouter([])],
+    }).compileComponents();
+
+    fixture = TestBed.createComponent(Profile);
+    component = fixture.componentInstance;
+    await fixture.whenStable();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+
+  it('should render the artist profile and featured works', () => {
+    fixture.detectChanges();
+    const element = fixture.nativeElement as HTMLElement;
+
+    expect(element.textContent).toContain('Dani Ávila - @MainYuumi');
+    expect(element.textContent).toContain('Obras destacadas');
+    expect(element.textContent).toContain('Un vistazo a mis mundos');
+    expect(element.textContent).toContain('Huellas');
+    expect(element.textContent).toContain('Glub Glub');
+    expect(element.querySelectorAll('app-art-card').length).toBe(6);
+  });
+});
+</file>
+
+<file path="src/app/shared/components/navbar/navbar.ts">
+import { Component } from '@angular/core';
+import { RouterLink, RouterLinkActive } from '@angular/router';
+
+@Component({
+  selector: 'app-navbar',
+  imports: [RouterLink, RouterLinkActive],
+  styleUrl: './navbar.css',
+  templateUrl: './navbar.html',
+})
+export class Navbar {}
+</file>
+
+<file path="src/app/app.spec.ts">
+import { TestBed } from '@angular/core/testing';
+import { provideRouter } from '@angular/router';
+import { App } from './app';
+
+describe('App', () => {
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [App],
+      providers: [provideRouter([])],
+    }).compileComponents();
+  });
+
+  it('should create the app', () => {
+    const fixture = TestBed.createComponent(App);
+    const app = fixture.componentInstance;
+    expect(app).toBeTruthy();
+  });
+
+  it('should have a router-outlet', () => {
+    const fixture = TestBed.createComponent(App);
+    const compiled = fixture.nativeElement as HTMLElement;
+    expect(compiled.querySelector('router-outlet')).toBeTruthy();
+  });
+});
+</file>
+
+<file path="angular.json">
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "cli": {
+    "packageManager": "npm",
+    "analytics": "a15a01d6-f9a4-4078-b53b-d92b7909b327"
+  },
+  "newProjectRoot": "projects",
+  "projects": {
+    "inkpixi-web": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "css"
+        }
+      },
+      "root": "",
+      "sourceRoot": "src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:application",
+          "options": {
+            "browser": "src/main.ts",
+            "tsConfig": "tsconfig.app.json",
+            "inlineStyleLanguage": "css",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "public"
+              }
+            ],
+            "styles": ["src/styles.css"]
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kB",
+                  "maximumError": "1MB"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "4kB",
+                  "maximumError": "8kB"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular/build:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "inkpixi-web:build:production"
+            },
+            "development": {
+              "buildTarget": "inkpixi-web:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "test": {
+          "builder": "@angular/build:unit-test"
+        }
+      }
+    }
+  }
+}
+</file>
+
+<file path="src/app/features/profile/profile.ts">
+import { Component } from '@angular/core';
+import { ArtCard } from '../../shared/components/art-card/art-card';
+import { Footer } from '../../shared/components/footer/footer';
+import { Navbar } from '../../shared/components/navbar/navbar';
+import { Artwork } from '../../shared/models/artwork';
+
+@Component({
+  selector: 'app-profile',
+  imports: [Navbar, ArtCard, Footer],
+  styleUrl: './profile.css',
+  templateUrl: './profile.html',
+})
+export class Profile {
+  protected readonly featuredWorks: Artwork[] = [
+    { id: 101, title: 'Huellas', category: 'Retratos', author: 'Dani Ávila', imageUrl: null, price: null, likes: 142 },
+    { id: 102, title: 'Al bosque', category: 'Escenarios', author: 'Dani Ávila', imageUrl: null, price: 45, likes: 380 },
+    { id: 103, title: 'Arquitectura del bosque', category: 'Diseño de personaje', author: 'Dani Ávila', imageUrl: null, price: null, likes: 215 },
+    { id: 104, title: 'Nuevos aires', category: 'Diseño de personaje', author: 'Dani Ávila', imageUrl: null, price: 60, likes: 512 },
+    { id: 105, title: 'Dark Alleyway #2', category: 'Diseño de personaje', author: 'Dani Ávila', imageUrl: null, price: null, likes: 98 },
+    { id: 106, title: 'Glub Glub', category: 'Criaturas', author: 'Dani Ávila', imageUrl: null, price: 25, likes: 320 },
+  ];
+}
+</file>
+
+<file path="src/app/shared/components/art-card/art-card.spec.ts">
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ArtCard } from './art-card';
+import { Artwork } from '../../models/artwork';
+
+describe('ArtCard', () => {
+  let component: ArtCard;
+  let fixture: ComponentFixture<ArtCard>;
+
+  const sampleArtwork: Artwork = {
+    id: 1,
+    title: 'Sol y nube',
+    imageUrl: null,
+    author: 'Dani Ávila',
+    category: 'Escenarios',
+    price: null,
+    likes: 248,
+  };
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [ArtCard],
+    }).compileComponents();
+
+    fixture = TestBed.createComponent(ArtCard);
+    fixture.componentRef.setInput('artwork', sampleArtwork);
+    component = fixture.componentInstance;
+    await fixture.whenStable();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+
+  it('should show artwork details and toggle the saved state', () => {
+    fixture.componentRef.setInput('artwork', {
+      id: 2,
+      title: 'Gold Token Riftbound',
+      imageUrl: null,
+      author: 'Dani Ávila',
+      category: 'Personajes',
+      likes: 3578,
+      price: 35,
+    });
+    fixture.detectChanges();
+
+    const element = fixture.nativeElement as HTMLElement;
+    expect(element.textContent).toContain('Gold Token Riftbound');
+    expect(element.textContent).toContain('Dani Ávila');
+    expect(element.textContent).toContain('Personajes · Portfolio');
+    expect(element.textContent).toContain('3578');
+    expect(element.textContent).toContain('35€');
+
+    const saveButton = element.querySelector('.guardar') as HTMLButtonElement;
+    saveButton.click();
+    fixture.detectChanges();
+
+    expect(saveButton.getAttribute('aria-pressed')).toBe('true');
+    expect(saveButton.getAttribute('aria-label')).toBe('Quitar de guardados');
+  });
+
+  it('should emit viewPortfolio when clicking "Ver portfolio ↗"', () => {
+    let emitted: Artwork | undefined;
+    component.viewPortfolio.subscribe((art) => (emitted = art));
+
+    const element = fixture.nativeElement as HTMLElement;
+    const portfolioButton = element.querySelector('.ver-portfolio') as HTMLButtonElement;
+    portfolioButton.click();
+
+    expect(emitted).toEqual(sampleArtwork);
+  });
+});
+</file>
+
+<file path="src/index.html">
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>InkPixi | Tu mundo creativo</title>
+    <base href="/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  </head>
+  <body>
+    <app-root> </app-root>
+  </body>
+</html>
+</file>
+
+<file path="src/styles.css">
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+input, button, textarea, select {
+  font: inherit;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
+#root, #__next, app-root {
+  isolation: isolate;
+}
+
+/* Variables globales de InkPixi */
+:root {
+  --bg-page: #f2f1f0;
+  --bg-card: #eee5f4;
+  --color-primary: #7b5294;
+  --color-accent: #8050c8;
+  --text-main: #382d42;
+  --text-muted: #81768a;
+  --font-hand: 'Caveat', cursive;
+}
+
+/* Scroll suave */
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: var(--bg-page);
+  color: var(--text-main);
+}
+</file>
+
+<file path="src/app/features/home/home.css">
+:host{display:block}
+.container{max-width:1100px;margin:40px auto;padding:0 20px}
+.hero{display:flex;justify-content:space-between;align-items:center;margin-bottom:40px}
+.hero-info{max-width:480px}
+.subtext{color:var(--color-primary);font-size:13px;font-weight:bold}
+.hero-info h1{font-size:52px;line-height:1.1;margin:10px 0;color:var(--text-main)}
+.linea{width:150px;height:3px;background:var(--color-primary);border:none;margin:10px 0 16px}
+.hero-info p{color:var(--text-muted);line-height:1.4;margin-bottom:20px}
+.hero-btns{display:flex;gap:12px;margin-bottom:20px}
+.btn-primary,.btn-secondary{padding:10px 18px;border-radius:8px;cursor:pointer;font-weight:bold}
+.btn-primary{background:var(--color-primary);color:#fff;border:none}
+.btn-secondary{background:#fff;color:var(--text-main);border:1px solid #ccc}
+.nota-lapiz{font-family:var(--font-hand);font-size:22px;color:var(--color-primary)}
+
+.hero-images{position:relative;width:420px;height:300px}
+.polaroid{background:#fff;padding:10px 10px 20px;box-shadow:2px 4px 12px rgba(0,0,0,.15);position:absolute}
+.polaroid p{font-family:var(--font-hand);font-size:18px;margin-top:8px;color:#444}
+.polaroid-1{top:10px;left:10px;transform:rotate(-3deg);z-index:1}
+.polaroid-1 .polaroid-box{width:250px;height:150px;background:#4a5c68}
+.polaroid-2{right:20px;bottom:10px;transform:rotate(5deg);z-index:2}
+.polaroid-2 .polaroid-box{width:110px;height:140px;background:#8b7965}
+.nota-flecha{position:absolute;bottom:-10px;left:100px;font-family:var(--font-hand);font-size:20px;color:var(--color-primary);z-index:3}
+
+.search-section{display:flex;align-items:center;gap:15px;margin-bottom:35px}
+.btn-filter{background:#d1bfe8;color:#4a2e61;border:none;padding:10px 18px;border-radius:8px;font-weight:bold;cursor:pointer;white-space:nowrap;text-decoration:none}
+.search-input{width:min(100%,460px);background:transparent;border:none;border-bottom:1px solid #777;padding:8px 4px;outline:none;font-size:15px;color:var(--text-main)}
+.search-input:focus{border-bottom-color:var(--color-primary)}
+
+.gallery-header{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:15px;flex-wrap:wrap;gap:10px}
+.gallery h2{font-family:var(--font-hand);color:var(--color-primary);font-size:32px}
+.ver-todas{color:var(--color-primary);font-weight:bold;font-size:14px;text-decoration:none}
+.ver-todas:hover{text-decoration:underline}
+.art-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:20px}
+
+.fab-mensajes{position:fixed;right:40px;bottom:30px;z-index:200;display:flex;align-items:center;justify-content:center;width:64px;height:64px;border:none;border-radius:50%;background:var(--color-primary);color:#fff;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,.25);animation:fab-in .2s ease-out}
+.fab-mensajes svg{width:30px;height:30px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+@keyframes fab-in{from{opacity:0;transform:scale(.8)}to{opacity:1;transform:scale(1)}}
+
+@media (max-width:700px){
+  .container{margin-top:24px}
+  .hero{align-items:flex-start;flex-direction:column;gap:24px}
+  .hero-info h1{font-size:42px}
+  .hero-images{width:100%;max-width:420px}
+  .search-section{flex-wrap:wrap}
+  .search-input{width:100%}
+}
+@media (max-width:480px){
+  .container{padding:0 16px}
+  .art-grid{grid-template-columns:1fr}
+  .fab-mensajes{right:20px;bottom:20px;width:52px;height:52px}
+  .fab-mensajes svg{width:24px;height:24px}
+}
+</file>
+
+<file path="src/app/shared/components/art-card/art-card.css">
+:host {
+  display: block;
+  min-width: 0;
+}
+
+.art-card {
+  position: relative;
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  padding: 18px;
+  overflow: hidden;
+  border-radius: 20px;
+  background: var(--bg-card, #eee5f4);
+  color: var(--text-main, #382d42);
+}
+
+.guardar {
+  position: absolute;
+  z-index: 1;
+  top: 12px;
+  right: 12px;
+  display: grid;
+  width: 34px;
+  height: 34px;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(238, 229, 244, 0.9);
+  color: var(--text-main, #392b45);
+  cursor: pointer;
+}
+
+.guardar svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.8;
+}
+
+.guardar.saved svg,
+.likes.liked svg {
+  fill: currentColor;
+}
+
+.guardar:focus-visible,
+.likes:focus-visible,
+.ver-portfolio:focus-visible {
+  outline: 2px solid var(--color-primary, #76509a);
+  outline-offset: 3px;
+}
+
+.card-img {
+  display: flex;
+  width: 82%;
+  aspect-ratio: 3 / 4;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  overflow: hidden;
+  border: 7px solid #514951;
+  background: #b7a5c5;
+}
+
+.card-img.sin-imagen {
+  background:
+    radial-gradient(ellipse at 50% 58%, #e8c447 0 7%, transparent 7.5%),
+    radial-gradient(ellipse at 50% 57%, #354b46 0 23%, transparent 23.5%),
+    linear-gradient(160deg, transparent 0 28%, #574b82 28% 42%, #386b91 42% 59%, #b8a78d 59% 100%);
+  box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.28);
+}
+
+.card-img img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.titulo {
+  overflow: hidden;
+  margin: 16px 2px 0;
+  color: var(--text-main, #382d42);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.35;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.autor,
+.categoria {
+  overflow: hidden;
+  margin: 5px 2px 0;
+  color: var(--text-muted, #81768a);
+  font-size: 12px;
+  line-height: 1.4;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.categoria {
+  margin-top: 7px;
+}
+
+.card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin: auto 2px 0;
+  padding-top: 12px;
+  font-size: 12px;
+}
+
+.likes {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 5px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--text-muted, #81768a);
+  font: inherit;
+  cursor: pointer;
+}
+
+.likes svg {
+  width: 15px;
+  height: 15px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+}
+
+.likes.liked {
+  color: var(--color-accent, #8050c8);
+}
+
+.acciones {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--color-accent, #8050c8);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.ver-portfolio {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+@media (max-width: 420px) {
+  .art-card {
+    padding: 14px;
+  }
+
+  .card-footer {
+    font-size: 11px;
+  }
+}
+</file>
+
+<file path="src/app/shared/components/art-card/art-card.html">
+<article class="art-card">
+  <button
+    type="button"
+    class="guardar"
+    [class.saved]="saved()"
+    [attr.aria-pressed]="saved()"
+    [attr.aria-label]="saved() ? 'Quitar de guardados' : 'Guardar ' + artwork().title"
+    (click)="toggleSaved()"
+  >
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M7 4h10a1 1 0 0 1 1 1v15l-6-4-6 4V5a1 1 0 0 1 1-1z" />
+    </svg>
+  </button>
+
+  <div class="card-img" [class.sin-imagen]="!artwork().imageUrl">
+    @if (artwork().imageUrl; as url) {
+      <img [src]="url" [alt]="artwork().title" loading="lazy" />
+    }
+  </div>
+
+  <h3 class="titulo">{{ artwork().title }}</h3>
+  <p class="autor">por {{ artwork().author }}</p>
+  <p class="categoria">{{ artwork().category }} · Portfolio</p>
+
+  <div class="card-footer">
+    <button
+      type="button"
+      class="likes"
+      [class.liked]="liked()"
+      [attr.aria-pressed]="liked()"
+      aria-label="Me gusta"
+      (click)="toggleLike()"
+    >
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path
+          d="M12 21l-1.4-1.3C5.4 15.4 2 12.3 2 8.5 2 5.4 4.4 3 7.5 3c1.7 0 3.4.8 4.5 2.1C13.1 3.8 14.8 3 16.5 3 19.6 3 22 5.4 22 8.5c0 3.8-3.4 6.9-8.6 11.2L12 21z"
+        />
+      </svg>
+      <span>{{ likes() }}</span>
+    </button>
+
+    <span class="acciones">
+      @if (artwork().price !== null) {
+        <span>{{ artwork().price }}€ –</span>
+      }
+      <button type="button" class="ver-portfolio" (click)="onViewPortfolio()">Ver portfolio ↗</button>
+    </span>
+  </div>
+</article>
+</file>
+
+<file path="src/app/app.routes.ts">
+import { Routes } from '@angular/router';
+import { Home } from './features/home/home';
+import { Profile } from './features/profile/profile';
+import { Login } from './features/auth/login/login';
+import { Register } from './features/auth/register/register';
+import { Discover } from './features/discover/discover';
+
+export const routes: Routes = [
+  { path: '', component: Home },
+  { path: 'descubrir', component: Discover },
+  { path: 'discover', redirectTo: 'descubrir' },
+  { path: 'login', component: Login },
+  { path: 'register', component: Register },
+  { path: 'profile', component: Profile },
+  { path: '**', redirectTo: '' },
+];
+</file>
+
+<file path="src/app/features/home/home.html">
+<app-navbar />
+
+<main class="container">
+  <section class="hero">
+    <div class="hero-info">
+      <h1>Tu mundo,<br />tus ideas</h1>
+      <hr class="linea" />
+      <p>Tu mundo, tus ideas, tu espacio.<br />Todo lo que imagines tiene su lugar</p>
+
+      <div class="hero-btns">
+        <button type="button" class="btn-primary" routerLink="/descubrir">Descubrir arte ↗</button>
+        <button type="button" class="btn-secondary" routerLink="/profile">Crear mi portfolio</button>
+      </div>
+
+      <p class="nota-lapiz">Un espacio para mentes que no paran de crear ✧</p>
+    </div>
+
+    <div class="hero-images">
+      <div class="polaroid polaroid-1">
+        <div class="polaroid-box"></div>
+        <p>Descripción de la imagen</p>
+      </div>
+
+      <div class="polaroid polaroid-2">
+        <div class="polaroid-box"></div>
+        <p>Descripción</p>
+      </div>
+
+      <span class="nota-flecha">de tu libreta al mundo ➔</span>
+    </div>
+  </section>
+
+  <!-- Barra de búsqueda hacia Descubrir -->
+  <section class="search-section">
+    <button type="button" class="btn-filter" routerLink="/descubrir">Descubrir catálogo ↗</button>
+    <input
+      type="text"
+      placeholder="Buscar en Descubrir por título, autor o categoría..."
+      class="search-input"
+      [value]="searchQuery()"
+      (input)="onSearchInput($event)"
+      (keydown.enter)="goToDiscover($event)"
+      aria-label="Buscar en Descubrir"
+    />
+  </section>
+
+  <!-- Obras destacadas (sin scroll infinito en Home) -->
+  <section class="gallery">
+    <div class="gallery-header">
+      <h2>Obras destacadas</h2>
+      <a routerLink="/descubrir" class="ver-todas">Ver todas en Descubrir ↗</a>
+    </div>
+
+    <div class="art-grid">
+      @for (art of featuredArtworks(); track art.id) {
+        <app-art-card [artwork]="art" />
+      }
+    </div>
+  </section>
+</main>
+
+<app-footer />
+
+<!-- Botón flotante de mensajes -->
+@if (showMessagesButton()) {
+  <button type="button" class="fab-mensajes" aria-label="Abrir mensajes">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path
+        d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.6 8.6 0 0 1-3.6-.8L3 21l1.9-5.2A8.4 8.4 0 0 1 3 11.5 8.5 8.5 0 0 1 12 3a8.5 8.5 0 0 1 9 8.5z"
+      />
+    </svg>
+  </button>
+}
+</file>
+
+<file path="src/app/features/home/home.ts">
+import {
+  Component,
+  DestroyRef,
+  computed,
+  inject,
+  signal,
+} from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { Router, RouterLink } from '@angular/router';
+import { ArtCard } from '../../shared/components/art-card/art-card';
+import { Footer } from '../../shared/components/footer/footer';
+import { Navbar } from '../../shared/components/navbar/navbar';
+import { Artwork } from '../../shared/models/artwork';
+import { ArtworkService } from '../../shared/services/artwork.service';
+
+const SHOW_MESSAGES_BUTTON_FROM = 300;
+
+@Component({
+  selector: 'app-home',
+  imports: [Navbar, ArtCard, RouterLink, Footer],
+  styleUrl: './home.css',
+  templateUrl: './home.html',
+  host: { '(window:scroll)': 'onScroll()' },
+})
+export class Home {
+  private readonly artworkService = inject(ArtworkService);
+  private readonly destroyRef = inject(DestroyRef);
+  private readonly router = inject(Router);
+
+  protected readonly artworks = signal<Artwork[]>([]);
+  readonly searchQuery = signal('');
+  readonly selectedCategory = signal<string>('Todas');
+  protected readonly showMessagesButton = signal(false);
+
+  // Muestra una selección destacada en Home sin saturar con scroll infinito
+  readonly featuredArtworks = computed(() => this.artworks().slice(0, 4));
+
+  constructor() {
+    this.artworkService
+      .getPage(0, 12)
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe((res) => {
+        this.artworks.set(res.items);
+      });
+  }
+
+  protected onScroll(): void {
+    if (typeof window !== 'undefined') {
+      this.showMessagesButton.set(window.scrollY > SHOW_MESSAGES_BUTTON_FROM);
+    }
+  }
+
+  goToDiscover(event?: Event): void {
+    if (event) event.preventDefault();
+    const query = this.searchQuery().trim();
+    if (query) {
+      this.router.navigate(['/descubrir'], { queryParams: { q: query } });
+    } else {
+      this.router.navigate(['/descubrir']);
+    }
+  }
+
+  onSearchInput(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    this.searchQuery.set(input.value);
+  }
+}
+</file>
+
+<file path="src/app/shared/components/art-card/art-card.ts">
+import { ChangeDetectionStrategy, Component, computed, input, output, signal } from '@angular/core';
+import { Artwork } from '../../models/artwork';
+
+@Component({
+  selector: 'app-art-card',
+  styleUrl: './art-card.css',
+  templateUrl: './art-card.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class ArtCard {
+  readonly artwork = input.required<Artwork>();
+  readonly viewPortfolio = output<Artwork>();
+
+  protected readonly saved = signal(false);
+  protected readonly liked = signal(false);
+  protected readonly likes = computed(() => this.artwork().likes + (this.liked() ? 1 : 0));
+
+  protected toggleSaved(): void {
+    this.saved.update((v) => !v);
+  }
+
+  protected toggleLike(): void {
+    this.liked.update((v) => !v);
+  }
+
+  protected onViewPortfolio(): void {
+    this.viewPortfolio.emit(this.artwork());
+  }
+}
+</file>
+
+</files>
