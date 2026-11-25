@@ -26,14 +26,13 @@
               autocomplete="current-password"
             />
 
-            <button class="submit-button" type="button" routerLink="/profile">Iniciar sesión</button>
+            <button class="submit-button" type="button" (click)="login()">Iniciar sesión</button>
           </form>
 
           <p class="switch-copy">
             ¿Aún no tienes cuenta?
             <a routerLink="/register">Regístrate</a>
           </p>
-          <a class="back-link" routerLink="/">← Volver al inicio</a>
         </div>
       </section>
     </section>

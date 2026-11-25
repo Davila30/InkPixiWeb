@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Component, inject } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
 import { AuthPanel } from '../../../shared/components/auth-panel/auth-panel';
 import { Footer } from '../../../shared/components/footer/footer';
+import { AuthService } from '../../../services/auth';
 
 @Component({
   selector: 'app-login',
@@ -9,4 +10,12 @@ import { Footer } from '../../../shared/components/footer/footer';
   styleUrl: './login.css',
   templateUrl: './login.html',
 })
-export class Login {}
+export class Login {
+  private readonly auth = inject(AuthService);
+  private readonly router = inject(Router);
+
+  login(): void {
+    this.auth.login();
+    void this.router.navigate(['/dashboard']);
+  }
+}
