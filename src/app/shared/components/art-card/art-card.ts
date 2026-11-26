@@ -5,9 +5,11 @@ import { Artwork } from '../../models/artwork';
 @Component({
   selector: 'app-art-card',
   imports: [RouterLink],
-  styleUrl: './art-card.css',
   templateUrl: './art-card.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  host: {
+    class: 'block min-w-0',
+  },
 })
 export class ArtCard {
   private readonly router = inject(Router, { optional: true });

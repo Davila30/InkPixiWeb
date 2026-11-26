@@ -18,9 +18,11 @@ const SHOW_MESSAGES_BUTTON_FROM = 300;
 @Component({
   selector: 'app-home',
   imports: [Navbar, ArtCard, RouterLink, Footer],
-  styleUrl: './home.css',
   templateUrl: './home.html',
-  host: { '(window:scroll)': 'onScroll()' },
+  host: {
+    class: 'block',
+    '(window:scroll)': 'onScroll()',
+  },
 })
 export class Home {
   private readonly artworkService = inject(ArtworkService);

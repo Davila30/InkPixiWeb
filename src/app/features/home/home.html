@@ -1,42 +1,66 @@
 <app-navbar />
 
-<main class="container">
-  <section class="hero">
-    <div class="hero-info">
-      <h1>Tu mundo,<br />tus ideas</h1>
-      <hr class="linea" />
-      <p>Tu mundo, tus ideas, tu espacio.<br />Todo lo que imagines tiene su lugar</p>
+<main class="mx-auto my-6 max-w-[1100px] px-4 min-[481px]:px-5 min-[701px]:my-10">
+  <section class="mb-10 flex flex-col items-start justify-between gap-6 min-[701px]:flex-row min-[701px]:items-center">
+    <div class="max-w-[480px]">
+      <h1 class="my-[10px] text-[42px] leading-[1.1] font-bold text-ink-main min-[701px]:text-[52px]">
+        Tu mundo,<br />tus ideas
+      </h1>
+      <hr class="mt-[10px] mb-4 h-[3px] w-[150px] border-0 bg-ink-primary" />
+      <p class="mb-5 leading-[1.4] text-ink-muted">
+        Tu mundo, tus ideas, tu espacio.<br />Todo lo que imagines tiene su lugar
+      </p>
 
-      <div class="hero-btns">
-        <button type="button" class="btn-primary" routerLink="/descubrir">Descubrir arte ↗</button>
-        <button type="button" class="btn-secondary" routerLink="/profile">Crear mi portfolio</button>
+      <div class="mb-5 flex gap-3">
+        <button
+          type="button"
+          class="cursor-pointer rounded-[8px] border-0 bg-ink-primary px-[18px] py-[10px] font-bold text-white"
+          routerLink="/descubrir"
+        >
+          Descubrir arte ↗
+        </button>
+        <button
+          type="button"
+          class="cursor-pointer rounded-[8px] border border-[#ccc] bg-white px-[18px] py-[10px] font-bold text-ink-main"
+          routerLink="/profile"
+        >
+          Crear mi portfolio
+        </button>
       </div>
 
-      <p class="nota-lapiz">Un espacio para mentes que no paran de crear ✧</p>
+      <p class="font-hand text-[22px] text-ink-primary">Un espacio para mentes que no paran de crear ✧</p>
     </div>
 
-    <div class="hero-images">
-      <div class="polaroid polaroid-1">
-        <div class="polaroid-box"></div>
-        <p>Descripción de la imagen</p>
+    <div class="relative h-[300px] w-full max-w-[420px]">
+      <div class="absolute top-[10px] left-[10px] z-[1] -rotate-3 bg-white px-[10px] pt-[10px] pb-5 shadow-[2px_4px_12px_rgba(0,0,0,0.15)]">
+        <div class="h-[150px] w-[250px] bg-[#4a5c68]"></div>
+        <p class="mt-2 font-hand text-[18px] text-[#444]">Descripción de la imagen</p>
       </div>
 
-      <div class="polaroid polaroid-2">
-        <div class="polaroid-box"></div>
-        <p>Descripción</p>
+      <div class="absolute right-5 bottom-[10px] z-[2] rotate-[5deg] bg-white px-[10px] pt-[10px] pb-5 shadow-[2px_4px_12px_rgba(0,0,0,0.15)]">
+        <div class="h-[140px] w-[110px] bg-[#8b7965]"></div>
+        <p class="mt-2 font-hand text-[18px] text-[#444]">Descripción</p>
       </div>
 
-      <span class="nota-flecha">de tu libreta al mundo ➔</span>
+      <span class="absolute -bottom-[10px] left-[100px] z-[3] font-hand text-[20px] text-ink-primary">
+        de tu libreta al mundo ➔
+      </span>
     </div>
   </section>
 
   <!-- Barra de búsqueda hacia Descubrir -->
-  <section class="search-section">
-    <button type="button" class="btn-filter" routerLink="/descubrir">Descubrir catálogo ↗</button>
+  <section class="mb-[35px] flex flex-wrap items-center gap-[15px] min-[701px]:flex-nowrap">
+    <button
+      type="button"
+      class="cursor-pointer whitespace-nowrap rounded-[8px] border-0 bg-[#d1bfe8] px-[18px] py-[10px] font-bold text-[#4a2e61] no-underline"
+      routerLink="/descubrir"
+    >
+      Descubrir catálogo ↗
+    </button>
     <input
       type="text"
       placeholder="Buscar en Descubrir por título, autor o categoría..."
-      class="search-input"
+      class="w-full border-0 border-b border-[#777] bg-transparent px-1 py-2 text-[15px] text-ink-main outline-none focus:border-b-ink-primary min-[701px]:w-[min(100%,460px)]"
       [value]="searchQuery()"
       (input)="onSearchInput($event)"
       (keydown.enter)="goToDiscover($event)"
@@ -45,13 +69,15 @@
   </section>
 
   <!-- Obras destacadas (sin scroll infinito en Home) -->
-  <section class="gallery">
-    <div class="gallery-header">
-      <h2>Obras destacadas</h2>
-      <a routerLink="/descubrir" class="ver-todas">Ver todas en Descubrir ↗</a>
+  <section>
+    <div class="mb-[15px] flex flex-wrap items-baseline justify-between gap-[10px]">
+      <h2 class="font-hand text-[32px] text-ink-primary">Obras destacadas</h2>
+      <a routerLink="/descubrir" class="text-[14px] font-bold text-ink-primary no-underline hover:underline">
+        Ver todas en Descubrir ↗
+      </a>
     </div>
 
-    <div class="art-grid">
+    <div class="grid grid-cols-1 gap-5 min-[481px]:grid-cols-[repeat(auto-fit,minmax(230px,1fr))]">
       @for (art of featuredArtworks(); track art.id) {
         <app-art-card [artwork]="art" />
       }
@@ -63,8 +89,16 @@
 
 <!-- Botón flotante de mensajes -->
 @if (showMessagesButton()) {
-  <button type="button" class="fab-mensajes" aria-label="Abrir mensajes">
-    <svg viewBox="0 0 24 24" aria-hidden="true">
+  <button
+    type="button"
+    class="fixed right-5 bottom-5 z-[200] flex size-[52px] cursor-pointer items-center justify-center rounded-full border-0 bg-ink-primary text-white shadow-[0_4px_12px_rgba(0,0,0,0.25)] animate-[fab-in_0.2s_ease-out] min-[481px]:right-10 min-[481px]:bottom-[30px] min-[481px]:size-16"
+    aria-label="Abrir mensajes"
+  >
+    <svg
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+      class="size-6 fill-none stroke-current stroke-2 [stroke-linecap:round] [stroke-linejoin:round] min-[481px]:size-[30px]"
+    >
       <path
         d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.6 8.6 0 0 1-3.6-.8L3 21l1.9-5.2A8.4 8.4 0 0 1 3 11.5 8.5 8.5 0 0 1 12 3a8.5 8.5 0 0 1 9 8.5z"
       />
