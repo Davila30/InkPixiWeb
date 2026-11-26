@@ -1,17 +1,46 @@
-<header class="navbar">
-  <a class="logo" routerLink="/" aria-label="InkPixi, volver al inicio">
-    <img src="/inkPixLogo.png" alt="InkPixi Logo" class="logo-img" />
+<header class="flex min-h-[58px] w-full items-center justify-between bg-[#cbb8e8] px-4 py-2 shadow-[0_2px_10px_rgba(74,59,105,0.08)] min-[681px]:px-9 min-[681px]:py-[10px]">
+  <a class="flex select-none items-center no-underline" routerLink="/" aria-label="InkPixi, volver al inicio">
+    <img src="/inkPixLogo.png" alt="InkPixi Logo" class="block h-[100px] w-auto object-contain" />
   </a>
 
-  <nav class="nav-links" aria-label="Navegación principal">
-    <a routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Inicio</a>
-    <a routerLink="/login" routerLinkActive="active">Login</a>
-    <a routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
-    <a routerLink="/descubrir" routerLinkActive="active">Descubrir</a>
+  <nav class="flex items-center gap-[6px] min-[681px]:gap-3" aria-label="Navegación principal">
+    <a
+      routerLink="/home"
+      routerLinkActive="bg-white text-[#543575] shadow-[0_2px_6px_rgba(0,0,0,0.08)]"
+      [routerLinkActiveOptions]="{ exact: true }"
+      class="rounded-[20px] px-[10px] py-[5px] text-[12px] font-bold text-[#342d3b] no-underline transition-all duration-200 ease-in-out hover:bg-white/50 hover:text-[#543575] min-[681px]:px-4 min-[681px]:py-[6px] min-[681px]:text-[13px]"
+    >
+      Inicio
+    </a>
+    <a
+      routerLink="/login"
+      routerLinkActive="bg-white text-[#543575] shadow-[0_2px_6px_rgba(0,0,0,0.08)]"
+      class="rounded-[20px] px-[10px] py-[5px] text-[12px] font-bold text-[#342d3b] no-underline transition-all duration-200 ease-in-out hover:bg-white/50 hover:text-[#543575] min-[681px]:px-4 min-[681px]:py-[6px] min-[681px]:text-[13px]"
+    >
+      Login
+    </a>
+    <a
+      routerLink="/dashboard"
+      routerLinkActive="bg-white text-[#543575] shadow-[0_2px_6px_rgba(0,0,0,0.08)]"
+      class="rounded-[20px] px-[10px] py-[5px] text-[12px] font-bold text-[#342d3b] no-underline transition-all duration-200 ease-in-out hover:bg-white/50 hover:text-[#543575] min-[681px]:px-4 min-[681px]:py-[6px] min-[681px]:text-[13px]"
+    >
+      Dashboard
+    </a>
+    <a
+      routerLink="/descubrir"
+      routerLinkActive="bg-white text-[#543575] shadow-[0_2px_6px_rgba(0,0,0,0.08)]"
+      class="rounded-[20px] px-[10px] py-[5px] text-[12px] font-bold text-[#342d3b] no-underline transition-all duration-200 ease-in-out hover:bg-white/50 hover:text-[#543575] min-[681px]:px-4 min-[681px]:py-[6px] min-[681px]:text-[13px]"
+    >
+      Descubrir
+    </a>
   </nav>
 
-  <div class="auth-status" [class.authenticated]="auth.isAuthenticated()">
-    <span class="status-dot" aria-hidden="true"></span>
+  <div class="flex items-center gap-2 whitespace-nowrap text-[13px] font-bold text-[#342d3b]">
+    <span
+      class="size-[10px] rounded-full"
+      [class]="auth.isAuthenticated() ? 'bg-[#3d8154] shadow-[0_0_0_3px_rgba(61,129,84,0.12)]' : 'bg-[#a84848] shadow-[0_0_0_3px_rgba(168,72,72,0.12)]'"
+      aria-hidden="true"
+    ></span>
     {{ auth.isAuthenticated() ? 'Sesión iniciada' : 'Sin sesión' }}
   </div>
 </header>

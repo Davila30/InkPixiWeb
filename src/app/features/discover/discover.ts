@@ -1,4 +1,5 @@
 import {
+  ChangeDetectionStrategy,
   Component,
   DestroyRef,
   computed,
@@ -16,8 +17,11 @@ import { ArtworkService } from '../../shared/services/artwork.service';
 @Component({
   selector: 'app-discover',
   imports: [Navbar, ArtCard, Footer],
-  styleUrl: './discover.css',
   templateUrl: './discover.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  host: {
+    class: 'block min-h-screen',
+  },
 })
 export class Discover {
   private readonly artworkService = inject(ArtworkService);

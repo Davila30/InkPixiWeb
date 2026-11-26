@@ -1,18 +1,20 @@
 <app-navbar />
 
-<main class="container">
-  <header class="discover-header">
-    <span class="subtext">Explora la comunidad</span>
-    <h1>Descubre más arte</h1>
-    <p>Todo lo que imagines tiene su lugar. Filtra y encuentra inspiración entre miles de creadores.</p>
+<main class="mx-auto my-[30px] max-w-[1100px] px-4 min-[481px]:px-5">
+  <header class="mb-[30px]">
+    <span class="text-[13px] font-bold tracking-[0.08em] text-ink-primary uppercase">Explora la comunidad</span>
+    <h1 class="my-[6px] font-hand text-[48px] leading-[1.1] text-ink-primary">Descubre más arte</h1>
+    <p class="text-[14px] text-ink-muted">
+      Todo lo que imagines tiene su lugar. Filtra y encuentra inspiración entre miles de creadores.
+    </p>
   </header>
 
   <!-- Filtro y buscador -->
-  <section class="search-section">
-    <div class="filter-dropdown">
+  <section class="relative mb-[35px] flex flex-wrap items-center gap-[15px] min-[701px]:flex-nowrap">
+    <div class="relative">
       <button
         type="button"
-        class="btn-filter"
+        class="cursor-pointer whitespace-nowrap rounded-[6px] border-0 bg-[#d1bfe8] px-4 py-2 font-bold text-[#4a2e61]"
         (click)="toggleFilter()"
         [attr.aria-expanded]="isFilterOpen()"
         aria-haspopup="listbox"
@@ -21,12 +23,15 @@
       </button>
 
       @if (isFilterOpen()) {
-        <div class="filter-menu" role="listbox">
+        <div
+          class="absolute top-[calc(100%+6px)] left-0 z-50 flex min-w-[160px] flex-col rounded-[8px] border border-[#e2d9ec] bg-white p-[6px] shadow-[0_4px_16px_rgba(0,0,0,0.15)]"
+          role="listbox"
+        >
           @for (cat of categories; track cat) {
             <button
               type="button"
-              class="filter-option"
-              [class.active]="selectedCategory() === cat"
+              class="cursor-pointer rounded-[4px] border-0 px-3 py-2 text-left text-[13px]"
+              [class]="selectedCategory() === cat ? 'bg-ink-primary font-bold text-white' : 'bg-transparent text-ink-main hover:bg-ink-card'"
               (click)="selectCategory(cat)"
               role="option"
               [attr.aria-selected]="selectedCategory() === cat"
@@ -41,7 +46,7 @@
     <input
       type="text"
       placeholder="Buscar por título, autor o categoría..."
-      class="search-input"
+      class="w-[min(100%,380px)] border-0 border-b border-[#777] bg-transparent px-1 py-[6px] text-[15px] text-ink-main outline-none focus:border-b-ink-primary min-[701px]:w-[380px]"
       [value]="searchQuery()"
       (input)="onSearch($event)"
       aria-label="Buscar obras"
@@ -49,13 +54,15 @@
   </section>
 
   <!-- Galería de obras -->
-  <section class="gallery">
-    <div class="art-grid">
+  <section>
+    <div class="grid grid-cols-1 gap-5 min-[481px]:grid-cols-[repeat(auto-fit,minmax(230px,1fr))]">
       @for (art of filteredArtworks(); track art.id) {
         <app-art-card [artwork]="art" />
       } @empty {
-        <div class="empty-state">
-          <p class="estado">No se han encontrado obras que coincidan con tu búsqueda ✧</p>
+        <div class="col-span-full px-5 py-10 text-center">
+          <p class="font-hand text-[24px] text-ink-primary">
+            No se han encontrado obras que coincidan con tu búsqueda ✧
+          </p>
         </div>
       }
     </div>

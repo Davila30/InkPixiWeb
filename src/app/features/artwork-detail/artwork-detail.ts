@@ -20,8 +20,10 @@ import { ArtworkService } from '../../shared/services/artwork.service';
   selector: 'app-artwork-detail',
   imports: [Navbar, Footer, RouterLink],
   templateUrl: './artwork-detail.html',
-  styleUrl: './artwork-detail.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  host: {
+    class: 'flex min-h-screen flex-col',
+  },
 })
 export class ArtworkDetail implements OnInit {
   private readonly route = inject(ActivatedRoute);

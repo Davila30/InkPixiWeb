@@ -1,37 +1,53 @@
-<div class="auth-page">
-  <main class="auth-main">
-    <section class="auth-layout" aria-label="Iniciar sesión en InkPixi">
+<div class="flex min-h-screen flex-col justify-between bg-[#f5f2f1] text-[#49365b]">
+  <main class="grid w-full flex-1 place-items-center px-3 py-4 min-[701px]:px-6 min-[701px]:py-9">
+    <section
+      class="grid min-h-[610px] w-[min(100%,460px)] grid-cols-1 overflow-hidden rounded-[22px] bg-white shadow-[0_24px_70px_#44305218] min-[701px]:w-[min(100%,980px)] min-[701px]:grid-cols-[0.94fr_1.06fr]"
+      aria-label="Iniciar sesión en InkPixi"
+    >
       <app-auth-panel />
 
-      <section class="form-panel">
-        <div class="form-content">
-          <p class="form-kicker">Qué alegría tenerte de vuelta</p>
-          <h2>Inicia sesión</h2>
-          <p class="form-intro">Entra en tu espacio creativo y sigue donde lo dejaste.</p>
+      <section class="grid place-items-center bg-white px-7 py-[42px] min-[701px]:px-[clamp(28px,7vw,82px)] min-[701px]:py-14">
+        <div class="w-[min(100%,360px)]">
+          <p class="text-[11px] font-bold tracking-[0.12em] text-[#8757ab] uppercase">Qué alegría tenerte de vuelta</p>
+          <h2 class="mt-[9px] mb-2 text-[30px] tracking-[-0.04em] text-[#463151]">Inicia sesión</h2>
+          <p class="mb-8 text-[13px] leading-[1.6] text-[#8a818d]">Entra en tu espacio creativo y sigue donde lo dejaste.</p>
 
-          <form>
-            <label for="login-email">Correo electrónico</label>
+          <form class="flex flex-col">
+            <label for="login-email" class="mb-2 text-[12px] font-bold text-[#55485d]">Correo electrónico</label>
             <input
               id="login-email"
               type="email"
               placeholder="hola@ejemplo.com"
               autocomplete="email"
+              class="mb-5 h-[46px] w-full rounded-[9px] border border-[#e8e1eb] bg-[#fcfafc] px-[14px] text-[13px] text-[#423649] outline-none transition-[border-color,box-shadow] duration-160 ease-in-out placeholder:text-[#b2aab5] focus:border-[#9c72bd] focus:shadow-[0_0_0_3px_#9c72bd20] aria-[invalid=true]:border-[#c65e78] motion-reduce:transition-none"
             />
 
-            <label for="login-password">Contraseña</label>
+            <label for="login-password" class="mb-2 text-[12px] font-bold text-[#55485d]">Contraseña</label>
             <input
               id="login-password"
               type="password"
               placeholder="Tu contraseña"
               autocomplete="current-password"
+              class="mb-5 h-[46px] w-full rounded-[9px] border border-[#e8e1eb] bg-[#fcfafc] px-[14px] text-[13px] text-[#423649] outline-none transition-[border-color,box-shadow] duration-160 ease-in-out placeholder:text-[#b2aab5] focus:border-[#9c72bd] focus:shadow-[0_0_0_3px_#9c72bd20] aria-[invalid=true]:border-[#c65e78] motion-reduce:transition-none"
             />
 
-            <button class="submit-button" type="button" (click)="login()">Iniciar sesión</button>
+            <button
+              class="mt-[6px] min-h-[46px] cursor-pointer rounded-[24px] border-0 bg-[#8052b2] text-[13px] font-bold text-white shadow-[0_8px_18px_#8052b233] transition-[background,transform] duration-160 ease-in-out hover:-translate-y-px hover:bg-[#70449f] focus-visible:outline-3 focus-visible:outline-offset-[3px] focus-visible:outline-[#b995d3] motion-reduce:transition-none"
+              type="button"
+              (click)="login()"
+            >
+              Iniciar sesión
+            </button>
           </form>
 
-          <p class="switch-copy">
+          <p class="mt-[26px] text-center text-[12px] text-[#8a818d]">
             ¿Aún no tienes cuenta?
-            <a routerLink="/register">Regístrate</a>
+            <a
+              routerLink="/register"
+              class="font-bold text-[#7950a2] no-underline hover:underline focus-visible:outline-3 focus-visible:outline-offset-[3px] focus-visible:outline-[#b995d3]"
+            >
+              Regístrate
+            </a>
           </p>
         </div>
       </section>

@@ -1,11 +1,20 @@
 <app-navbar />
 
-<main class="dashboard">
-  <section class="dashboard-card" aria-labelledby="dashboard-title">
-    <p class="dashboard-kicker">Zona privada</p>
-    <h1 id="dashboard-title">Dashboard</h1>
+<main class="grid min-h-[520px] place-items-center px-5 py-12">
+  <section
+    class="w-[min(520px,100%)] rounded-[24px] border border-[#ded3ef] bg-white p-10 text-center shadow-[0_18px_40px_rgba(67,49,93,0.12)]"
+    aria-labelledby="dashboard-title"
+  >
+    <p class="font-bold tracking-[0.12em] text-[#6d4d8f] uppercase">Zona privada</p>
+    <h1 id="dashboard-title" class="mt-2 mb-3 text-[#342d3b]">Dashboard</h1>
     <p>Has iniciado sesión correctamente.</p>
-    <button type="button" (click)="logout()">Cerrar sesión</button>
+    <button
+      type="button"
+      (click)="logout()"
+      class="mt-[18px] cursor-pointer rounded-full border-0 bg-[#543575] px-[22px] py-3 font-bold text-white"
+    >
+      Cerrar sesión
+    </button>
   </section>
 </main>
 

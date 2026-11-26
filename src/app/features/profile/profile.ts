@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ArtCard } from '../../shared/components/art-card/art-card';
 import { Footer } from '../../shared/components/footer/footer';
 import { Navbar } from '../../shared/components/navbar/navbar';
@@ -7,8 +7,11 @@ import { Artwork } from '../../shared/models/artwork';
 @Component({
   selector: 'app-profile',
   imports: [Navbar, ArtCard, Footer],
-  styleUrl: './profile.css',
   templateUrl: './profile.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  host: {
+    class: 'block min-h-screen',
+  },
 })
 export class Profile {
   protected readonly featuredWorks: Artwork[] = [

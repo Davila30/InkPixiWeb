@@ -1,53 +1,71 @@
-<div class="auth-page">
-  <main class="auth-main">
-    <section class="auth-layout" aria-label="Crear una cuenta de InkPixi">
+<div class="flex min-h-screen flex-col justify-between bg-[#f5f2f1] text-[#49365b]">
+  <main class="grid w-full flex-1 place-items-center px-3 py-4 min-[701px]:px-6 min-[701px]:py-9">
+    <section
+      class="grid min-h-[610px] w-[min(100%,460px)] grid-cols-1 overflow-hidden rounded-[22px] bg-white shadow-[0_24px_70px_#44305218] min-[701px]:w-[min(100%,980px)] min-[701px]:grid-cols-[0.94fr_1.06fr]"
+      aria-label="Crear una cuenta de InkPixi"
+    >
       <app-auth-panel />
 
-      <section class="form-panel">
-        <div class="form-content">
-          <p class="form-kicker">Tu rincón creativo te espera</p>
-          <h2>Crea tu cuenta</h2>
-          <p class="form-intro">Únete a la comunidad y comparte todo lo que imaginas.</p>
+      <section class="grid place-items-center bg-white px-7 py-[42px] min-[701px]:px-[clamp(28px,7vw,82px)] min-[701px]:py-14">
+        <div class="w-[min(100%,360px)]">
+          <p class="text-[11px] font-bold tracking-[0.12em] text-[#8757ab] uppercase">Tu rincón creativo te espera</p>
+          <h2 class="mt-[9px] mb-2 text-[30px] tracking-[-0.04em] text-[#463151]">Crea tu cuenta</h2>
+          <p class="mb-8 text-[13px] leading-[1.6] text-[#8a818d]">Únete a la comunidad y comparte todo lo que imaginas.</p>
 
-          <form>
-            <label for="register-name">Nombre</label>
+          <form class="flex flex-col">
+            <label for="register-name" class="mb-2 text-[12px] font-bold text-[#55485d]">Nombre</label>
             <input
               id="register-name"
               type="text"
               placeholder="¿Cómo te llamas?"
               autocomplete="name"
+              class="mb-5 h-[46px] w-full rounded-[9px] border border-[#e8e1eb] bg-[#fcfafc] px-[14px] text-[13px] text-[#423649] outline-none transition-[border-color,box-shadow] duration-160 ease-in-out placeholder:text-[#b2aab5] focus:border-[#9c72bd] focus:shadow-[0_0_0_3px_#9c72bd20] aria-[invalid=true]:border-[#c65e78] motion-reduce:transition-none"
             />
 
-            <label for="register-email">Correo electrónico</label>
+            <label for="register-email" class="mb-2 text-[12px] font-bold text-[#55485d]">Correo electrónico</label>
             <input
               id="register-email"
               type="email"
               placeholder="hola@ejemplo.com"
               autocomplete="email"
+              class="mb-5 h-[46px] w-full rounded-[9px] border border-[#e8e1eb] bg-[#fcfafc] px-[14px] text-[13px] text-[#423649] outline-none transition-[border-color,box-shadow] duration-160 ease-in-out placeholder:text-[#b2aab5] focus:border-[#9c72bd] focus:shadow-[0_0_0_3px_#9c72bd20] aria-[invalid=true]:border-[#c65e78] motion-reduce:transition-none"
             />
 
-            <label for="register-password">Contraseña</label>
+            <label for="register-password" class="mb-2 text-[12px] font-bold text-[#55485d]">Contraseña</label>
             <input
               id="register-password"
               type="password"
               placeholder="Mínimo 8 caracteres"
               autocomplete="new-password"
+              class="mb-5 h-[46px] w-full rounded-[9px] border border-[#e8e1eb] bg-[#fcfafc] px-[14px] text-[13px] text-[#423649] outline-none transition-[border-color,box-shadow] duration-160 ease-in-out placeholder:text-[#b2aab5] focus:border-[#9c72bd] focus:shadow-[0_0_0_3px_#9c72bd20] aria-[invalid=true]:border-[#c65e78] motion-reduce:transition-none"
             />
 
-            <label for="register-confirm-password">Confirma tu contraseña</label>
+            <label for="register-confirm-password" class="mb-2 text-[12px] font-bold text-[#55485d]">Confirma tu contraseña</label>
             <input
               id="register-confirm-password"
               type="password"
               placeholder="Repite tu contraseña"
               autocomplete="new-password"
+              class="mb-5 h-[46px] w-full rounded-[9px] border border-[#e8e1eb] bg-[#fcfafc] px-[14px] text-[13px] text-[#423649] outline-none transition-[border-color,box-shadow] duration-160 ease-in-out placeholder:text-[#b2aab5] focus:border-[#9c72bd] focus:shadow-[0_0_0_3px_#9c72bd20] aria-[invalid=true]:border-[#c65e78] motion-reduce:transition-none"
             />
 
-            <button class="submit-button" type="button" routerLink="/login">Crear cuenta</button>
+            <button
+              class="mt-[6px] min-h-[46px] cursor-pointer rounded-[24px] border-0 bg-[#8052b2] text-[13px] font-bold text-white shadow-[0_8px_18px_#8052b233] transition-[background,transform] duration-160 ease-in-out hover:-translate-y-px hover:bg-[#70449f] focus-visible:outline-3 focus-visible:outline-offset-[3px] focus-visible:outline-[#b995d3] motion-reduce:transition-none"
+              type="button"
+              routerLink="/login"
+            >
+              Crear cuenta
+            </button>
           </form>
 
-          <p class="switch-copy">
+          <p class="mt-[26px] text-center text-[12px] text-[#8a818d]">
             ¿Ya tienes cuenta?
-            <a routerLink="/login">Inicia sesión</a>
+            <a
+              routerLink="/login"
+              class="font-bold text-[#7950a2] no-underline hover:underline focus-visible:outline-3 focus-visible:outline-offset-[3px] focus-visible:outline-[#b995d3]"
+            >
+              Inicia sesión
+            </a>
           </p>
         </div>
       </section>
