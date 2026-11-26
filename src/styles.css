@@ -1,11 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap');
+@import "tailwindcss";
 
-@layer theme, base, components, utilities;
-
-@import "tailwindcss/theme.css" layer(theme);
-@import "tailwindcss/utilities.css" layer(utilities);
-
-/*Paleta oficial y tipografía de InkPixi */
+/* Paleta oficial y tipografía de InkPixi */
 @theme {
   --color-ink-primary: #7851B5;   /* Morado principal (botones, acentos fuertes) */
   --color-ink-secondary: #C4AFE0; /* Lavanda medio (bordes, hover, badges) */
@@ -13,13 +9,14 @@
   --color-ink-soft: #EEDCE7;      /* Rosa/lila pastel (detalles, contenedores suaves) */
   --color-ink-page: #F2F1F0;      /* Fondo general de la página */
 
-  /*Mantenemos colores de texto legibles para contraste */
+  /* Mantenemos colores de texto legibles para contraste */
   --color-ink-main: #382d42;
   --color-ink-muted: #81768a;
 
   --font-hand: 'Caveat', cursive;
   --font-sans: Arial, sans-serif;
 }
+
 @keyframes fab-in {
   from {
     opacity: 0;
@@ -32,9 +29,6 @@
 }
 
 @layer base {
-  *, *::before, *::after { box-sizing: border-box; }
-  * { margin: 0; }
-
   html {
     scroll-behavior: smooth;
   }
@@ -46,15 +40,13 @@
   }
 
   body {
-    line-height: 1.5;
-    -webkit-font-smoothing: antialiased;
     font-family: var(--font-sans);
     background-color: var(--color-ink-page);
     color: var(--color-ink-main);
+    -webkit-font-smoothing: antialiased;
   }
 
-  img, picture, video, canvas, svg { display: block; max-width: 100%; }
-  input, button, textarea, select { font: inherit; }
-  p, h1, h2, h3, h4, h5, h6 { overflow-wrap: break-word; }
-  #root, #__next, app-root { isolation: isolate; }
+  app-root {
+    isolation: isolate;
+  }
 }
