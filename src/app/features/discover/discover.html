@@ -14,7 +14,7 @@
     <div class="relative">
       <button
         type="button"
-        class="cursor-pointer whitespace-nowrap rounded-[6px] border-0 bg-[#d1bfe8] px-4 py-2 font-bold text-[#4a2e61]"
+        class="cursor-pointer whitespace-nowrap rounded-[6px] border-0 bg-[#d1bfe8] px-4 py-2 font-bold text-[#4a2e61] hover:bg-[#765b9f]"
         (click)="toggleFilter()"
         [attr.aria-expanded]="isFilterOpen()"
         aria-haspopup="listbox"
@@ -51,6 +51,13 @@
       (input)="onSearch($event)"
       aria-label="Buscar obras"
     />
+    <button
+      type="submit"
+      class="cursor-pointer rounded-[6px] border-0 bg-[#8051bc] px-4 py-2 font-bold text-white hover:bg-[#6d40aa]"
+      (click)="clearFilters()"
+    >
+    Buscar
+    </button>
   </section>
 
   <!-- Galería de obras -->
